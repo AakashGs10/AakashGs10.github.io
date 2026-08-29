@@ -7,7 +7,6 @@
     <title>Merkle Tree Implementation - Aakash G S</title>
     {adsense_code}
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
         .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
@@ -15,69 +14,52 @@
 </head>
 <body class="min-h-screen flex flex-col items-center p-6">
     <nav class="w-full max-w-4xl mb-8 flex justify-between items-center">
-        <a href="index.html" class="text-blue-400 hover:text-blue-300 flex items-center gap-2 transition-colors">
+        <a href="index.html" class="text-blue-400 hover:text-blue-300 flex items-center gap-2 transition-colors font-semibold">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Back to Projects
         </a>
         <div class="text-slate-400 font-medium">Aakash G S</div>
     </nav>
     
-    <main class="w-full max-w-4xl glass-panel rounded-2xl p-8 shadow-2xl">
-        <header class="mb-10 border-b border-slate-700 pb-6">
-            <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-4">Merkle Tree Implementation</h1>
+    <main class="w-full max-w-4xl glass-panel rounded-2xl p-8 shadow-2xl mb-12">
+        <header class="mb-8 border-b border-slate-700 pb-6">
+            <h1 class="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-4">Merkle Tree Implementation</h1>
             <p class="text-xl text-slate-300">Data Structures and Algorithms project demonstrating a custom Merkle Tree for data verification.</p>
         </header>
         
-        <div x-data="{ tab: 'overview' }">
-            <div class="flex space-x-4 mb-6 border-b border-slate-700">
-                <button @click="tab = 'overview'" :class="tab === 'overview' ? 'border-blue-400 text-blue-400' : 'border-transparent text-slate-400 hover:text-slate-200'" class="px-4 py-2 border-b-2 font-medium transition-colors">
-                    Overview
-                </button>
-                <button @click="tab = 'architecture'" :class="tab === 'architecture' ? 'border-emerald-400 text-emerald-400' : 'border-transparent text-slate-400 hover:text-slate-200'" class="px-4 py-2 border-b-2 font-medium transition-colors">
-                    Architecture
-                </button>
-            </div>
+        <article class="prose prose-invert max-w-none text-slate-300 leading-relaxed text-lg">
             
-            <div x-show="tab === 'overview'" class="animate-[fadeIn_0.3s_ease-in-out]">
-                <h2 class="text-2xl font-semibold mb-4 text-white">Project Summary</h2>
-                <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed">
-                    <p>Data Structures and Algorithms project demonstrating a custom Merkle Tree for data verification. This project is a key part of my technical portfolio, demonstrating hands-on experience in the respective domain.</p>
-                    <div class="mt-8 p-4 bg-slate-800 rounded-lg border border-slate-700 flex items-center justify-between">
-                        <span class="text-slate-200 font-medium">View source code on GitHub</span>
-                        <a href="https://github.com/AakashGs10/COLLEGE-PROJECTS/tree/main/03_Merkle_Tree_DSA" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md transition-colors shadow-lg">GitHub Repo</a>
-                    </div>
-                </div>
-            </div>
+            <h3 class="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">1. Executive Summary</h3>
+            <p class="mb-4">This Data Structures and Algorithms (DSA) project is a ground-up implementation of a Merkle Tree (Hash Tree). It demonstrates how large datasets can be securely and efficiently verified without transmitting the entire dataset.</p>
             
-            <div x-show="tab === 'architecture'" class="animate-[fadeIn_0.3s_ease-in-out]" style="display: none;">
-                <h2 class="text-2xl font-semibold mb-4 text-white">Technical Architecture</h2>
-                <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed">
-                    <p class="text-lg">A custom C++ implementation of a Merkle (Hash) Tree. Leaf nodes contain SHA-256 hashes of data blocks, and non-leaf nodes contain the hash of their children. Includes functions for efficient data verification (Merkle Proofs), tree generation from a file, and dynamic updating of leaf nodes with O(log N) recalculation.</p>
-                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="p-4 bg-slate-800 rounded-lg border border-slate-700 hover:border-emerald-500 transition-colors cursor-default">
-                            <h3 class="text-emerald-400 font-medium mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                                Design Pattern
-                            </h3>
-                            <p class="text-sm text-slate-400">Follows industry-standard structural and behavioral design patterns tailored for optimal performance.</p>
-                        </div>
-                        <div class="p-4 bg-slate-800 rounded-lg border border-slate-700 hover:border-blue-500 transition-colors cursor-default">
-                            <h3 class="text-blue-400 font-medium mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                Performance
-                            </h3>
-                            <p class="text-sm text-slate-400">Optimized algorithms and data structures ensuring minimal latency and high throughput.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h3 class="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">2. The Problem Statement</h3>
+            <p class="mb-4">In distributed systems (like Git, IPFS, or Blockchains), nodes need to verify that a specific piece of data belongs to a larger dataset without downloading everything. A standard linear hash chain requires O(N) time for verification. A tree structure was needed to bring this down to O(log N).</p>
+            
+            <h3 class="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">3. Technical Architecture</h3>
+            <p class="mb-4">Written in modern C++, the project manages memory dynamically using smart pointers. The tree is constructed bottom-up: raw data blocks are hashed using the SHA-256 algorithm to form the leaf nodes. Pairs of adjacent nodes are concatenated and hashed to form the parent nodes, continuing recursively until a single Root Hash is formed. The project includes a comprehensive API for generating "Merkle Proofs".</p>
+            
+            <h3 class="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">4. Key Features & Implementation</h3>
+            <ul class="list-disc pl-6 mb-4 space-y-2">
+                <li><strong class="text-blue-400">Efficient Proof Generation:</strong> The algorithm generates cryptographic proofs in O(log N) time, extracting only the sibling hashes needed to reconstruct the root.</li>
+                <li><strong class="text-blue-400">Dynamic Updates:</strong> If a single data block changes, the tree intelligently recalculates only the affected branch up to the root, rather than rebuilding the entire tree.</li>
+                <li><strong class="text-blue-400">Memory Optimization:</strong> Strictly typed and utilizes move semantics and reference passing to minimize memory overhead during deep tree traversals.</li>
+            </ul>
+            
+            <h3 class="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">5. Conclusion</h3>
+            <p class="mb-4">This implementation underscores a strong grasp of complex data structures, cryptography, and systems-level memory management in C++.</p>
+        
+        </article>
+        
+        <div class="mt-12 pt-8 border-t border-slate-700 flex flex-col sm:flex-row items-center justify-between">
+            <p class="text-slate-400 mb-4 sm:mb-0">Want to see the code?</p>
+            <a href="https://github.com/AakashGs10/COLLEGE-PROJECTS/tree/main/03_Merkle_Tree_DSA" target="_blank" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg font-bold transition-all shadow-lg hover:shadow-blue-500/25 flex items-center gap-2">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                View Repository
+            </a>
         </div>
     </main>
-    <footer class="mt-12 text-slate-500 text-sm">
+    <footer class="mt-auto pb-6 text-slate-500 text-sm">
         &copy; 2026 Aakash G S. All rights reserved.
     </footer>
-    <style>
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
 </body>
 </html>

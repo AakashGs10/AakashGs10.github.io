@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pose Detection System - Aakash G S</title>
+    {adsense_code}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-6">
+    <nav class="w-full max-w-4xl mb-8 flex justify-between items-center">
+        <a href="index.html" class="text-blue-400 hover:text-blue-300 flex items-center gap-2 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back to Projects
+        </a>
+        <div class="text-slate-400 font-medium">Aakash G S</div>
+    </nav>
+    
+    <main class="w-full max-w-4xl glass-panel rounded-2xl p-8 shadow-2xl">
+        <header class="mb-10 border-b border-slate-700 pb-6">
+            <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-4">Pose Detection System</h1>
+            <p class="text-xl text-slate-300">Computer vision project utilizing machine learning models to detect human poses in real-time.</p>
+        </header>
+        
+        <div x-data="{ tab: 'overview' }">
+            <div class="flex space-x-4 mb-6 border-b border-slate-700">
+                <button @click="tab = 'overview'" :class="tab === 'overview' ? 'border-blue-400 text-blue-400' : 'border-transparent text-slate-400 hover:text-slate-200'" class="px-4 py-2 border-b-2 font-medium transition-colors">
+                    Overview
+                </button>
+                <button @click="tab = 'architecture'" :class="tab === 'architecture' ? 'border-emerald-400 text-emerald-400' : 'border-transparent text-slate-400 hover:text-slate-200'" class="px-4 py-2 border-b-2 font-medium transition-colors">
+                    Architecture
+                </button>
+            </div>
+            
+            <div x-show="tab === 'overview'" class="animate-[fadeIn_0.3s_ease-in-out]">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Project Summary</h2>
+                <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed">
+                    <p>Computer vision project utilizing machine learning models to detect human poses in real-time. This project is a key part of my technical portfolio, demonstrating hands-on experience in the respective domain.</p>
+                    <div class="mt-8 p-4 bg-slate-800 rounded-lg border border-slate-700 flex items-center justify-between">
+                        <span class="text-slate-200 font-medium">View source code on GitHub</span>
+                        <a href="https://github.com/AakashGs10/POSE-DETECTION" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md transition-colors shadow-lg">GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div x-show="tab === 'architecture'" class="animate-[fadeIn_0.3s_ease-in-out]" style="display: none;">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Technical Architecture</h2>
+                <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed">
+                    <p class="text-lg">Utilizes Python and OpenCV for video stream processing. Human body keypoints are detected using the MediaPipe Pose framework (BlazePose model). The system processes frames sequentially, extracts 33 3D landmarks, and renders the skeletal wireframe back onto the video feed, optimized for CPU inference.</p>
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-800 rounded-lg border border-slate-700 hover:border-emerald-500 transition-colors cursor-default">
+                            <h3 class="text-emerald-400 font-medium mb-2 flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                Design Pattern
+                            </h3>
+                            <p class="text-sm text-slate-400">Follows industry-standard structural and behavioral design patterns tailored for optimal performance.</p>
+                        </div>
+                        <div class="p-4 bg-slate-800 rounded-lg border border-slate-700 hover:border-blue-500 transition-colors cursor-default">
+                            <h3 class="text-blue-400 font-medium mb-2 flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                Performance
+                            </h3>
+                            <p class="text-sm text-slate-400">Optimized algorithms and data structures ensuring minimal latency and high throughput.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="mt-12 text-slate-500 text-sm">
+        &copy; 2026 Aakash G S. All rights reserved.
+    </footer>
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</body>
+</html>

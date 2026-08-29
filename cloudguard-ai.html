@@ -1,19 +1,20 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CloudGuard AI - Aakash G S</title>
-    <!-- Google AdSense -->
+    
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9233292105405086" crossorigin="anonymous"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
         .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         
-        /* Markdown styling inside Tailwind prose */
         .markdown-body h1, .markdown-body h2, .markdown-body h3 { color: #e2e8f0; margin-top: 1.5em; margin-bottom: 0.5em; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 0.3em; }
         .markdown-body h1 { font-size: 2.25rem; border-bottom: 2px solid #38bdf8; padding-bottom: 0.5rem; }
         .markdown-body h2 { font-size: 1.75rem; }
@@ -24,7 +25,7 @@
         .markdown-body a { color: #38bdf8; text-decoration: underline; }
         .markdown-body code { background-color: #1e293b; padding: 0.2em 0.4em; border-radius: 3px; font-family: monospace; color: #fb7185; }
         .markdown-body pre { background-color: #1e293b; padding: 1.5em; border-radius: 8px; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #334155; }
-        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; font-size: 0.9rem; }
+        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; font-size: 0.9rem; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
         .markdown-body blockquote { border-left: 4px solid #38bdf8; padding-left: 1.5em; color: #94a3b8; font-style: italic; background-color: rgba(56, 189, 248, 0.05); padding: 1em; border-radius: 4px; }
         .markdown-body table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; }
         .markdown-body th, .markdown-body td { border: 1px solid #334155; padding: 0.75em; text-align: left; }
@@ -55,11 +56,11 @@
         
         <textarea id="markdown-source" style="display:none;">&lt;div align="center"&gt;
 
-# CloudGuard AI ðŸ›¡ï¸
+# CloudGuard AI 🛡️
 
 **Autonomous FinOps &amp; SecOps Agent for Enterprise Cloud Infrastructure**
 
-An MCP server that lets any LLM audit cloud spend, detect security exposure, and drive remediation workflows â€” without ever holding write access to your infrastructure.
+An MCP server that lets any LLM audit cloud spend, detect security exposure, and drive remediation workflows — without ever holding write access to your infrastructure.
 
 [![NitroStack](https://img.shields.io/badge/Built%20with-NitroStack-0052CC?style=for-the-badge)](https://nitrostack.ai)
 [![MCP](https://img.shields.io/badge/Protocol-MCP%20v1.0-blueviolet?style=for-the-badge)](https://modelcontextprotocol.io)
@@ -67,8 +68,8 @@ An MCP server that lets any LLM audit cloud spend, detect security exposure, and
 [![Node](https://img.shields.io/badge/Node-18%2B-339933?style=for-the-badge&amp;logo=node.js&amp;logoColor=white)](https://nodejs.org/)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-**Track:** ðŸ¤– Enterprise AI &amp; Workplace Automation
-**Event:** NitroStack Ã— Amrita University Hackathon 2026
+**Track:** 🤖 Enterprise AI &amp; Workplace Automation
+**Event:** NitroStack × Amrita University Hackathon 2026
 
 &lt;/div&gt;
 
@@ -103,15 +104,15 @@ Enterprise cloud environments leak money and expose attack surface in the same w
 
 A mid-size engineering org runs hundreds of compute instances. Some were spun up for a sprint two quarters ago and never terminated. Some are GPU nodes idling at 2% CPU while billing $3/hour. Meanwhile, an S3 bucket sits publicly readable because someone loosened an ACL during a debugging session and never reverted it.
 
-Finding these requires correlating four separate data sources â€” inventory, utilization telemetry, security findings, and the org directory that tells you *who to actually contact*. Doing it manually is a recurring multi-hour task that nobody wants and everybody postpones. Doing it with naive automation produces false positives: a nightly ETL job looks exactly like an idle instance if you only check the CPU average.
+Finding these requires correlating four separate data sources — inventory, utilization telemetry, security findings, and the org directory that tells you *who to actually contact*. Doing it manually is a recurring multi-hour task that nobody wants and everybody postpones. Doing it with naive automation produces false positives: a nightly ETL job looks exactly like an idle instance if you only check the CPU average.
 
-**CloudGuard AI turns that recurring manual audit into a conversation.** You ask an LLM to audit your cloud; it reasons over live infrastructure data through MCP tools, distinguishes genuine waste from periodic workloads, identifies resource owners by name and email, and drafts remediation â€” while every mutation stays behind a human approval gate.
+**CloudGuard AI turns that recurring manual audit into a conversation.** You ask an LLM to audit your cloud; it reasons over live infrastructure data through MCP tools, distinguishes genuine waste from periodic workloads, identifies resource owners by name and email, and drafts remediation — while every mutation stays behind a human approval gate.
 
 ---
 
 ## What CloudGuard AI Does
 
-### ðŸ’° Cost Waste Detection (FinOps)
+### 💰 Cost Waste Detection (FinOps)
 
 Correlates hourly cost rates against CPU utilization telemetry to surface infrastructure that costs money without doing work.
 
@@ -122,16 +123,16 @@ Correlates hourly cost rates against CPU utilization telemetry to surface infras
 
 The threshold is an *input*, not a constant. The reasoning about what the numbers mean happens in the model, which is the entire point of exposing this over MCP instead of writing a dashboard.
 
-### ðŸ” Security Posture Assessment (SecOps)
+### 🔐 Security Posture Assessment (SecOps)
 
 Audits findings across severity tiers and resolves them to accountable humans.
 
 - Filters findings by `critical` / `high` / `medium` / `low`
 - Covers public bucket exposure, open ingress rules, unencrypted volumes, outdated kernels with known CVEs
-- Resolves resource ownership through an enterprise directory lookup â€” by user ID, team name, or partial name match
+- Resolves resource ownership through an enterprise directory lookup — by user ID, team name, or partial name match
 - Surfaces escalation contacts so alerts route to a team lead, not into a void
 
-### ðŸ”§ Remediation Workflow
+### 🔧 Remediation Workflow
 
 Generates the fix, files the ticket, notifies the channel, and closes the loop.
 
@@ -141,7 +142,7 @@ Generates the fix, files the ticket, notifies the channel, and closes the loop.
 - Closes resolved GitHub issues programmatically with `state_reason: completed`
 - Exposes a single atomic `run_full_secops_audit` that chains the entire pipeline for one-command execution
 
-### ðŸ“Š Executive Reporting
+### 📊 Executive Reporting
 
 Compiles a posture scorecard suitable for a leadership readout: overall security score, per-framework compliance percentages (SOC 2 Type II, CIS AWS Foundations, HIPAA), financial impact, and live telemetry health.
 
@@ -151,11 +152,11 @@ Compiles a posture scorecard suitable for a leadership readout: overall security
 
 | Principle | How CloudGuard implements it |
 | :--- | :--- |
-| **Zero write access, structurally** | The MCP surface exposes no `terminate_instance`, no `delete_bucket`, no `apply_patch`. This isn't an IAM policy that could be misconfigured â€” the capability does not exist in the tool schema. |
+| **Zero write access, structurally** | The MCP surface exposes no `terminate_instance`, no `delete_bucket`, no `apply_patch`. This isn't an IAM policy that could be misconfigured — the capability does not exist in the tool schema. |
 | **Reasoning over rules** | Tools return data and thresholds are parameters. The LLM decides what constitutes waste. No hardcoded business logic to maintain as your environment changes. |
 | **Swappable data layer** | `CloudProviderAdapter` sits between tools and data. `MockCloudService` reads JSON today; an `AwsCloudService` reading live EC2/S3/Security Hub drops into the same interface with zero tool changes. |
 | **Human-in-the-loop by construction** | `HumanApprovalGuard` validates sign-off before any state-changing operation. Slack cards carry explicit approve/escalate actions rather than auto-executing. |
-| **Ownership resolution** | Findings resolve to a named person with an email and an escalation path â€” the difference between an alert that gets actioned and one that gets ignored. |
+| **Ownership resolution** | Findings resolve to a named person with an email and an escalation path — the difference between an alert that gets actioned and one that gets ignored. |
 | **Credentials never in source** | All integration secrets load from environment variables. Nothing sensitive is committed, and the server degrades gracefully with a clear `skipped` status when integrations aren't configured. |
 | **Offline-capable demo** | Full mock dataset ships in-repo. No AWS account, no credentials, no network required to run the complete audit pipeline. |
 
@@ -166,87 +167,87 @@ Compiles a posture scorecard suitable for a leadership readout: overall security
 CloudGuard AI is a four-layer system. Each layer knows only about the one beneath it.
 
 ```
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚  LAYER 4 â€” AI CLIENT                                            â”‚
-â”‚                                                                 â”‚
-â”‚  Claude Desktop  Â·  ChatGPT Developer Mode  Â·  NitroStudio      â”‚
-â”‚                                                                 â”‚
-â”‚  Role: reasoning engine. Holds zero business logic.             â”‚
-â”‚  Decides which tools to call, interprets results, drafts        â”‚
-â”‚  narrative summaries, requests human approval.                  â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                             â”‚
+┌─────────────────────────────────────────────────────────────────┐
+│  LAYER 4 — AI CLIENT                                            │
+│                                                                 │
+│  Claude Desktop  ·  ChatGPT Developer Mode  ·  NitroStudio      │
+│                                                                 │
+│  Role: reasoning engine. Holds zero business logic.             │
+│  Decides which tools to call, interprets results, drafts        │
+│  narrative summaries, requests human approval.                  │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
                   MCP Protocol over HTTP / SSE
-                             â”‚
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚  LAYER 3 â€” MCP SURFACE                                          â”‚
-â”‚                                                                 â”‚
-â”‚  @Tool Â· @Resource Â· @Prompt decorators (@nitrostack/core)       â”‚
-â”‚  10 Tools  +  1 Resource  +  1 Prompt                           â”‚
-â”‚                                                                 â”‚
-â”‚  Zod schemas validate every input at runtime before it          â”‚
-â”‚  reaches domain logic. Schema is auto-published to the client.  â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                             â”‚
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚  LAYER 2 â€” DOMAIN SERVICES                                      â”‚
-â”‚                                                                 â”‚
-â”‚  UtilizationService    â†’ workload shape classification          â”‚
-â”‚  MockCloudService      â†’ data adapter implementation            â”‚
-â”‚  CloudProviderAdapter  â†’ swappable provider interface           â”‚
-â”‚  HumanApprovalGuard    â†’ sign-off validation gate               â”‚
-â”‚  GitHub REST client    â†’ issue create / patch / close           â”‚
-â”‚  Slack Block Kit clientâ†’ incident card dispatch                 â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                             â”‚
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚  LAYER 1 â€” DATA SOURCES  (read-only)                            â”‚
-â”‚                                                                 â”‚
-â”‚  compute.json            â†’ EC2 inventory, cost, owner tags      â”‚
-â”‚  metrics.json            â†’ hourly CPU timeseries per instance   â”‚
-â”‚  security_findings.json  â†’ audit results by severity            â”‚
-â”‚  org_directory.json      â†’ teams, owners, escalation contacts   â”‚
-â”‚                                                                 â”‚
-â”‚  In production: AWS SDK â†’ EC2 Â· RDS Â· S3 Â· Security Hub         â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                             │
+┌────────────────────────────┴────────────────────────────────────┐
+│  LAYER 3 — MCP SURFACE                                          │
+│                                                                 │
+│  @Tool · @Resource · @Prompt decorators (@nitrostack/core)       │
+│  10 Tools  +  1 Resource  +  1 Prompt                           │
+│                                                                 │
+│  Zod schemas validate every input at runtime before it          │
+│  reaches domain logic. Schema is auto-published to the client.  │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+┌────────────────────────────┴────────────────────────────────────┐
+│  LAYER 2 — DOMAIN SERVICES                                      │
+│                                                                 │
+│  UtilizationService    → workload shape classification          │
+│  MockCloudService      → data adapter implementation            │
+│  CloudProviderAdapter  → swappable provider interface           │
+│  HumanApprovalGuard    → sign-off validation gate               │
+│  GitHub REST client    → issue create / patch / close           │
+│  Slack Block Kit client→ incident card dispatch                 │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+┌────────────────────────────┴────────────────────────────────────┐
+│  LAYER 1 — DATA SOURCES  (read-only)                            │
+│                                                                 │
+│  compute.json            → EC2 inventory, cost, owner tags      │
+│  metrics.json            → hourly CPU timeseries per instance   │
+│  security_findings.json  → audit results by severity            │
+│  org_directory.json      → teams, owners, escalation contacts   │
+│                                                                 │
+│  In production: AWS SDK → EC2 · RDS · S3 · Security Hub         │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ### End-to-End Audit Sequence
 
 ```
 Human: "Execute the full SecOps audit"
-   â”‚
-   â–¼
+   │
+   ▼
 LLM recognizes intent, calls run_full_secops_audit()
-   â”‚
-   â”œâ”€â”€â–¶ Reads compute.json + metrics.json + security_findings.json
-   â”‚
-   â”œâ”€â”€â–¶ Correlates cost against utilization
-   â”‚      â””â”€ flags legacy-analytics-gpu, jenkins-build-executor-orphaned
-   â”‚      â””â”€ protects ml-training-cluster-master (periodic ML workload)
-   â”‚
-   â”œâ”€â”€â–¶ Resolves FIND-101 owner via org_directory.json
-   â”‚
-   â”œâ”€â”€â–¶ POST api.github.com/repos/{owner}/{repo}/issues
-   â”‚      â””â”€ P1 ticket created, labelled, assigned
-   â”‚
-   â””â”€â”€â–¶ POST hooks.slack.com/services/...
-          â””â”€ Block Kit card to #cloudguard-alerts
+   │
+   ├──▶ Reads compute.json + metrics.json + security_findings.json
+   │
+   ├──▶ Correlates cost against utilization
+   │      └─ flags legacy-analytics-gpu, jenkins-build-executor-orphaned
+   │      └─ protects ml-training-cluster-master (periodic ML workload)
+   │
+   ├──▶ Resolves FIND-101 owner via org_directory.json
+   │
+   ├──▶ POST api.github.com/repos/{owner}/{repo}/issues
+   │      └─ P1 ticket created, labelled, assigned
+   │
+   └──▶ POST hooks.slack.com/services/...
+          └─ Block Kit card to #cloudguard-alerts
              with [Approve &amp; Apply] [Escalate to Lead]
-   â”‚
-   â–¼
+   │
+   ▼
 LLM: "Found $4,250/mo waste across 2 instances. Filed issue #7.
       Slack card posted. Approve remediation?"
-   â”‚
-   â–¼
+   │
+   ▼
 Human approves
-   â”‚
-   â–¼
+   │
+   ▼
 LLM calls remediate_security_leak({ issueNumber: 7 })
-   â”‚
-   â””â”€â”€â–¶ PATCH github issue â†’ state: closed, state_reason: completed
-   â”‚
-   â–¼
+   │
+   └──▶ PATCH github issue → state: closed, state_reason: completed
+   │
+   ▼
 Audit closed. Full trail in GitHub + Slack.
 ```
 
@@ -267,7 +268,7 @@ CloudGuard AI exposes **10 tools, 1 resource, and 1 prompt** over MCP.
 | 5 | `execute_security_patch` | Remediation | Generate Terraform HCL and AWS CLI remediation for a finding | `findingId: string` |
 | 6 | `send_slack_alert` | Integration | Dispatch a Block Kit incident card with interactive action buttons | `severity`, `title`, `summary`, `owner`, `remediationCode?` |
 | 7 | `create_github_issue` | Integration | File a live P1 security ticket via the GitHub REST API | `title`, `findingId`, `assignee`, `severity`, `remediationSnippet?`, `repoOwner?`, `repoName?` |
-| 8 | `run_full_secops_audit` | Orchestration | Atomic end-to-end pipeline: scan â†’ analyse â†’ file ticket â†’ alert | *(none)* |
+| 8 | `run_full_secops_audit` | Orchestration | Atomic end-to-end pipeline: scan → analyse → file ticket → alert | *(none)* |
 | 9 | `remediate_security_leak` | Remediation | Apply the fix and close the corresponding GitHub issue | `issueNumber?: number` (default `1`) |
 | 10 | `get_security_scorecard` | Reporting | Executive posture score, compliance ratings, financial impact | *(none)* |
 
@@ -288,22 +289,22 @@ CloudGuard AI exposes **10 tools, 1 resource, and 1 prompt** over MCP.
 ## Technology Stack
 
 **Core**
-- [`@nitrostack/core`](https://nitrostack.ai) â€” MCP server framework with decorator-based tool registration
+- [`@nitrostack/core`](https://nitrostack.ai) — MCP server framework with decorator-based tool registration
 - Node.js 18+ (20.x recommended)
 - TypeScript 5.3, strict mode
-- Zod â€” runtime input schema validation
-- `reflect-metadata` â€” decorator metadata support
-- `dotenv` â€” environment configuration
+- Zod — runtime input schema validation
+- `reflect-metadata` — decorator metadata support
+- `dotenv` — environment configuration
 
 **Integrations**
-- GitHub REST API `2022-11-28` â€” issue creation, patching, closure
-- Slack Incoming Webhooks + Block Kit â€” rich interactive incident cards
-- AWS SDK *(production path)* â€” EC2, RDS, S3, Security Hub
+- GitHub REST API `2022-11-28` — issue creation, patching, closure
+- Slack Incoming Webhooks + Block Kit — rich interactive incident cards
+- AWS SDK *(production path)* — EC2, RDS, S3, Security Hub
 
 **Tooling**
-- NitroStack CLI â€” scaffolding, build, deploy
-- NitroStudio â€” desktop MCP inspector and debugger
-- NitroCloud â€” serverless hosting with a permanent HTTPS endpoint
+- NitroStack CLI — scaffolding, build, deploy
+- NitroStudio — desktop MCP inspector and debugger
+- NitroCloud — serverless hosting with a permanent HTTPS endpoint
 
 ---
 
@@ -332,7 +333,7 @@ npm install
 cp .env.example .env
 ```
 
-Open `.env` and fill in your values. **Every field is optional** â€” CloudGuard runs a complete audit against mock data with an empty `.env`. Integrations that aren't configured return a clear `skipped` status instead of failing.
+Open `.env` and fill in your values. **Every field is optional** — CloudGuard runs a complete audit against mock data with an empty `.env`. Integrations that aren't configured return a clear `skipped` status instead of failing.
 
 ### Run
 
@@ -343,15 +344,15 @@ npm run dev
 You should see:
 
 ```
-âœ… Application initialized with 10 tools, 1 resources, 1 prompts
-ðŸŒ MCP Streamable HTTP transport listening on http://localhost:3000/mcp
+✅ Application initialized with 10 tools, 1 resources, 1 prompts
+🌐 MCP Streamable HTTP transport listening on http://localhost:3000/mcp
 ```
 
 | Endpoint | Purpose |
 | :--- | :--- |
-| `http://localhost:3000/mcp` | Streamable HTTP transport â€” Claude's preferred |
-| `http://localhost:3000/sse` | Server-Sent Events â€” ChatGPT's preferred |
-| `http://localhost:3001` | NitroStudio Inspector â€” visual MCP debugger |
+| `http://localhost:3000/mcp` | Streamable HTTP transport — Claude's preferred |
+| `http://localhost:3000/sse` | Server-Sent Events — ChatGPT's preferred |
+| `http://localhost:3001` | NitroStudio Inspector — visual MCP debugger |
 
 ### Verify
 
@@ -367,23 +368,23 @@ npm run start:prod   # run compiled output
 All configuration lives in `.env`. **No credential is ever hardcoded in source.**
 
 ```env
-# â”€â”€â”€ Server â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ─── Server ────────────────────────────────────────────────
 NODE_ENV=development
 PORT=3000
 
-# â”€â”€â”€ Cloud Provider â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ─── Cloud Provider ────────────────────────────────────────
 CLOUD_PROVIDER=mock              # 'mock' | 'aws'
 MOCK_DATA_PATH=./data/mock
 
-# â”€â”€â”€ GitHub Integration (optional) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ─── GitHub Integration (optional) ─────────────────────────
 GITHUB_TOKEN=
 GITHUB_REPO_OWNER=
 GITHUB_REPO_NAME=
 
-# â”€â”€â”€ Slack Integration (optional) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ─── Slack Integration (optional) ──────────────────────────
 SLACK_WEBHOOK_URL=
 
-# â”€â”€â”€ NitroCloud â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ─── NitroCloud ────────────────────────────────────────────
 NITROSTACK_APP_MODE=openai       # set 'openai' for ChatGPT compatibility
 AWS_REGION=us-east-1
 ```
@@ -401,41 +402,41 @@ AWS_REGION=us-east-1
 
 ### Obtaining Credentials
 
-**GitHub Personal Access Token** â€” [github.com/settings/tokens](https://github.com/settings/tokens) â†’ Generate new token (classic) â†’ scope `repo`. Fine-grained tokens work too; grant *Issues: Read and write* on the target repository.
+**GitHub Personal Access Token** — [github.com/settings/tokens](https://github.com/settings/tokens) → Generate new token (classic) → scope `repo`. Fine-grained tokens work too; grant *Issues: Read and write* on the target repository.
 
-**Slack Incoming Webhook** â€” [api.slack.com/apps](https://api.slack.com/apps) â†’ your app â†’ *Incoming Webhooks* â†’ *Add New Webhook to Workspace* â†’ select the target channel.
+**Slack Incoming Webhook** — [api.slack.com/apps](https://api.slack.com/apps) → your app → *Incoming Webhooks* → *Add New Webhook to Workspace* → select the target channel.
 
-&gt; âš ï¸ **Never commit `.env`.** It is listed in `.gitignore`. If a credential is ever exposed, revoke it immediately at its source rather than relying on removing it from the repository â€” pushed secrets should be treated as compromised.
+&gt; ⚠️ **Never commit `.env`.** It is listed in `.gitignore`. If a credential is ever exposed, revoke it immediately at its source rather than relying on removing it from the repository — pushed secrets should be treated as compromised.
 
 ---
 
 ## Connecting to Claude and ChatGPT
 
-### Claude â€” Desktop or Web
+### Claude — Desktop or Web
 
 1. Open **claude.ai** or **Claude Desktop**
-2. **Settings â†’ Connectors â†’ Add custom connector**
+2. **Settings → Connectors → Add custom connector**
 3. Configure:
    - **Name:** `CloudGuard AI`
    - **URL:** `https://&lt;your-app&gt;.nitrocloud.app/mcp`
    - **Advanced settings:** leave empty (no OAuth required)
-4. **Add â†’ Connect**
+4. **Add → Connect**
 5. In a new chat, enable CloudGuard AI from the tools menu
-6. Verify: *"List the tools available from CloudGuard AI"* â€” you should see all ten
+6. Verify: *"List the tools available from CloudGuard AI"* — you should see all ten
 
-### ChatGPT â€” Developer Mode
+### ChatGPT — Developer Mode
 
 Requires a Plus, Pro, or Enterprise subscription.
 
-1. **Settings â†’ Apps &amp; Connectors â†’ Advanced â†’ Developer Mode** `ON`
+1. **Settings → Apps &amp; Connectors → Advanced → Developer Mode** `ON`
 2. **Create App**
 3. Configure:
    - **Name:** `CloudGuard AI`
    - **Description:** `Cloud cost and security anomaly detection`
-   - **MCP URL:** `https://&lt;your-app&gt;.nitrocloud.app/sse` â† note `/sse`, not `/mcp`
+   - **MCP URL:** `https://&lt;your-app&gt;.nitrocloud.app/sse` ← note `/sse`, not `/mcp`
    - **Authentication:** No Auth
-4. **Create App â†’ Connect**
-5. Enable in a new Developer Mode chat â€” all ten tools auto-discover
+4. **Create App → Connect**
+5. Enable in a new Developer Mode chat — all ten tools auto-discover
 
 ### Local Testing Before Deployment
 
@@ -461,15 +462,15 @@ Both transports are served simultaneously by the same process.
 
 ## Usage Walkthroughs
 
-### 1. Full Pipeline â€” One Command
+### 1. Full Pipeline — One Command
 
 &gt; **Prompt:** *"Execute the full SecOps audit."*
 
 **Execution trace:**
 1. `run_full_secops_audit()` invoked with no arguments
 2. Reads `compute.json` and `security_findings.json`
-3. Calls `create_github_issue()` internally â†’ live POST to GitHub REST API
-4. Calls `send_slack_alert()` internally â†’ live POST to Slack webhook
+3. Calls `create_github_issue()` internally → live POST to GitHub REST API
+4. Calls `send_slack_alert()` internally → live POST to Slack webhook
 5. Returns audit summary, GitHub issue number and URL, Slack dispatch confirmation
 
 This is the demo tool. One prompt, complete end-to-end pipeline, live external side effects.
@@ -478,31 +479,31 @@ This is the demo tool. One prompt, complete end-to-end pipeline, live external s
 
 &gt; **Prompt:** *"Scan the cloud inventory for all instances owned by the analytics team."*
 
-`scan_cloud_inventory({ teamTag: "analytics" })` filters `compute.json` case-insensitively and returns matching instances with names, types, hourly cost, and owner tags â€” plus total scanned versus matched counts for context.
+`scan_cloud_inventory({ teamTag: "analytics" })` filters `compute.json` case-insensitively and returns matching instances with names, types, hourly cost, and owner tags — plus total scanned versus matched counts for context.
 
 ### 3. Waste Analysis with a Custom Threshold
 
 &gt; **Prompt:** *"Find every instance running under 5% CPU and tell me what it's costing us annually."*
 
-`calculate_idle_waste({ maxCpuThreshold: 5 })` joins `compute.json` against `metrics.json`, computes `costPerHour Ã— 24 Ã— 30` for each idle instance, and returns a per-instance breakdown plus the aggregate monthly figure. The LLM annualizes and narrates.
+`calculate_idle_waste({ maxCpuThreshold: 5 })` joins `compute.json` against `metrics.json`, computes `costPerHour × 24 × 30` for each idle instance, and returns a per-instance breakdown plus the aggregate monthly figure. The LLM annualizes and narrates.
 
-**The ETL trap:** `ml-training-cluster-master` ($3.06/hr) shows low *average* CPU but spikes hard on a training schedule. Because the tool returns the raw timeseries rather than just a boolean, the model can recognize the periodic shape and correctly protect it â€” where a threshold-only rule would have flagged your most expensive production workload for termination.
+**The ETL trap:** `ml-training-cluster-master` ($3.06/hr) shows low *average* CPU but spikes hard on a training schedule. Because the tool returns the raw timeseries rather than just a boolean, the model can recognize the periodic shape and correctly protect it — where a threshold-only rule would have flagged your most expensive production workload for termination.
 
 ### 4. Owner Resolution and Escalation
 
 &gt; **Prompt:** *"Who owns FIND-101, and what's their escalation contact?"*
 
-`audit_security_risks({ severity: "critical" })` surfaces the finding, then `get_owner_contact()` resolves the owner tag against `org_directory.json` â€” matching on user ID, team, or partial name â€” and returns the named individual, email, team, and escalation path.
+`audit_security_risks({ severity: "critical" })` surfaces the finding, then `get_owner_contact()` resolves the owner tag against `org_directory.json` — matching on user ID, team, or partial name — and returns the named individual, email, team, and escalation path.
 
 ### 5. Remediation Round Trip
 
 &gt; **Prompt:** *"Generate the fix for the S3 public access issue, file it, then close it out."*
 
-1. `audit_security_risks()` â†’ identifies `FIND-101`
-2. `execute_security_patch({ findingId: "FIND-101" })` â†’ returns Terraform HCL and AWS CLI
-3. `create_github_issue()` â†’ files P1 with the patch embedded in the body
+1. `audit_security_risks()` → identifies `FIND-101`
+2. `execute_security_patch({ findingId: "FIND-101" })` → returns Terraform HCL and AWS CLI
+3. `create_github_issue()` → files P1 with the patch embedded in the body
 4. *Human reviews and approves*
-5. `remediate_security_leak({ issueNumber: 7 })` â†’ `PATCH` closes the issue as completed
+5. `remediate_security_leak({ issueNumber: 7 })` → `PATCH` closes the issue as completed
 
 ### 6. Executive Readout
 
@@ -516,52 +517,52 @@ This is the demo tool. One prompt, complete end-to-end pipeline, live external s
 
 ```
 cloudguard-ai/
-â”‚
-â”œâ”€â”€ README.md                                  â† you are here
-â”œâ”€â”€ package.json
-â”œâ”€â”€ tsconfig.json
-â”œâ”€â”€ .env.example                               â† config template
-â”œâ”€â”€ .gitignore
-â”‚
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ index.ts                               â† MCP bootstrap; all 10 tools registered here
-â”‚   â”‚
-â”‚   â”œâ”€â”€ modules/                               â† extracted domain logic (refactor in progress)
-â”‚   â”‚   â”œâ”€â”€ analysis/
-â”‚   â”‚   â”‚   â”œâ”€â”€ analysis.tools.ts              â† inventory scan, waste calculation
-â”‚   â”‚   â”‚   â””â”€â”€ utilization.service.ts         â† workload shape classification
-â”‚   â”‚   â”œâ”€â”€ security/
-â”‚   â”‚   â”‚   â””â”€â”€ security.tools.ts              â† findings audit, severity filtering
-â”‚   â”‚   â”œâ”€â”€ remediation/
-â”‚   â”‚   â”‚   â”œâ”€â”€ remediation.tools.ts           â† patch generation, issue closure
-â”‚   â”‚   â”‚   â”œâ”€â”€ templates/
-â”‚   â”‚   â”‚   â”‚   â”œâ”€â”€ secure-bucket.tf.tmpl      â† S3 public access block
-â”‚   â”‚   â”‚   â”‚   â”œâ”€â”€ restrict-sg.tf.tmpl        â† security group ingress restriction
-â”‚   â”‚   â”‚   â”‚   â””â”€â”€ terminate-instance.tf.tmpl â† instance teardown (draft only)
-â”‚   â”‚   â”‚   â””â”€â”€ docs/
-â”‚   â”‚   â”‚       â”œâ”€â”€ IDEA.md
-â”‚   â”‚   â”‚       â””â”€â”€ README.md
-â”‚   â”‚   â””â”€â”€ workflow/
-â”‚   â”‚       â””â”€â”€ workflow.tools.ts              â† GitHub + Slack orchestration
-â”‚   â”‚
-â”‚   â”œâ”€â”€ services/
-â”‚   â”‚   â”œâ”€â”€ cloud-provider.adapter.ts          â† swappable provider interface
-â”‚   â”‚   â””â”€â”€ mock-cloud.service.ts              â† JSON-backed implementation
-â”‚   â”‚
-â”‚   â””â”€â”€ guards/
-â”‚       â””â”€â”€ human-approval.guard.ts            â† sign-off validation gate
-â”‚
-â”œâ”€â”€ data/
-â”‚   â””â”€â”€ mock/
-â”‚       â”œâ”€â”€ compute.json                       â† 8 EC2 instances
-â”‚       â”œâ”€â”€ metrics.json                       â† 168h CPU timeseries per instance
-â”‚       â”œâ”€â”€ security_findings.json             â† 8 findings, critical â†’ low
-â”‚       â””â”€â”€ org_directory.json                 â† teams, owners, escalation contacts
-â”‚
-â”œâ”€â”€ test-all.ts                                â† full suite
-â”œâ”€â”€ test-person2.ts                            â† analysis module
-â”œâ”€â”€ test-person3.ts                            â† security module
-â””â”€â”€ test-person4.ts                            â† workflow module
+│
+├── README.md                                  ← you are here
+├── package.json
+├── tsconfig.json
+├── .env.example                               ← config template
+├── .gitignore
+│
+├── src/
+│   ├── index.ts                               ← MCP bootstrap; all 10 tools registered here
+│   │
+│   ├── modules/                               ← extracted domain logic (refactor in progress)
+│   │   ├── analysis/
+│   │   │   ├── analysis.tools.ts              ← inventory scan, waste calculation
+│   │   │   └── utilization.service.ts         ← workload shape classification
+│   │   ├── security/
+│   │   │   └── security.tools.ts              ← findings audit, severity filtering
+│   │   ├── remediation/
+│   │   │   ├── remediation.tools.ts           ← patch generation, issue closure
+│   │   │   ├── templates/
+│   │   │   │   ├── secure-bucket.tf.tmpl      ← S3 public access block
+│   │   │   │   ├── restrict-sg.tf.tmpl        ← security group ingress restriction
+│   │   │   │   └── terminate-instance.tf.tmpl ← instance teardown (draft only)
+│   │   │   └── docs/
+│   │   │       ├── IDEA.md
+│   │   │       └── README.md
+│   │   └── workflow/
+│   │       └── workflow.tools.ts              ← GitHub + Slack orchestration
+│   │
+│   ├── services/
+│   │   ├── cloud-provider.adapter.ts          ← swappable provider interface
+│   │   └── mock-cloud.service.ts              ← JSON-backed implementation
+│   │
+│   └── guards/
+│       └── human-approval.guard.ts            ← sign-off validation gate
+│
+├── data/
+│   └── mock/
+│       ├── compute.json                       ← 8 EC2 instances
+│       ├── metrics.json                       ← 168h CPU timeseries per instance
+│       ├── security_findings.json             ← 8 findings, critical → low
+│       └── org_directory.json                 ← teams, owners, escalation contacts
+│
+├── test-all.ts                                ← full suite
+├── test-person2.ts                            ← analysis module
+├── test-person3.ts                            ← security module
+└── test-person4.ts                            ← workflow module
 ```
 
 ### Key Files
@@ -571,7 +572,7 @@ cloudguard-ai/
 | `src/index.ts` | Application entry point. Defines `CloudGuardTools` with all `@Tool`, `@Resource`, and `@Prompt` decorators, plus the root `AppModule`. |
 | `src/services/cloud-provider.adapter.ts` | The seam that makes the data layer swappable. Implement this interface against the AWS SDK and nothing above it changes. |
 | `src/guards/human-approval.guard.ts` | Validates human sign-off before state-changing operations execute. |
-| `src/modules/analysis/utilization.service.ts` | Classifies workload shape â€” flat-idle versus periodic â€” so genuine waste is separated from scheduled jobs. |
+| `src/modules/analysis/utilization.service.ts` | Classifies workload shape — flat-idle versus periodic — so genuine waste is separated from scheduled jobs. |
 
 ---
 
@@ -585,31 +586,31 @@ CloudGuard ships with a complete synthetic environment so the full pipeline runs
 - Reproducible results across every run
 - Works on conference-hall Wi-Fi
 
-### `compute.json` â€” 8 EC2 instances
+### `compute.json` — 8 EC2 instances
 
 | Instance | Rate | Expected Verdict |
 | :--- | ---: | :--- |
-| `legacy-analytics-gpu` | $1.20/hr | ðŸ”´ **Waste** â€” GPU node, sustained low CPU |
-| `jenkins-build-executor-orphaned` | $0.768/hr | ðŸ”´ **Waste** â€” abandoned build server |
-| `ml-training-cluster-master` | $3.06/hr | ðŸŸ¢ **Protected** â€” periodic ML workload, not idle |
-| `dev-sandbox-db-replica` | $0.52/hr | ðŸŸ¢ Healthy |
-| `prod-k8s-worker-node-01` | $0.34/hr | ðŸŸ¢ Healthy |
-| `prod-auth-service-01` | $0.0672/hr | ðŸŸ¢ Healthy |
-| `marketing-staging-api` | $0.0416/hr | ðŸŸ¢ Healthy |
+| `legacy-analytics-gpu` | $1.20/hr | 🔴 **Waste** — GPU node, sustained low CPU |
+| `jenkins-build-executor-orphaned` | $0.768/hr | 🔴 **Waste** — abandoned build server |
+| `ml-training-cluster-master` | $3.06/hr | 🟢 **Protected** — periodic ML workload, not idle |
+| `dev-sandbox-db-replica` | $0.52/hr | 🟢 Healthy |
+| `prod-k8s-worker-node-01` | $0.34/hr | 🟢 Healthy |
+| `prod-auth-service-01` | $0.0672/hr | 🟢 Healthy |
+| `marketing-staging-api` | $0.0416/hr | 🟢 Healthy |
 
-The spread from $0.04 to $3.06/hr is deliberate â€” it makes the cost-weighted reasoning visible rather than trivial.
+The spread from $0.04 to $3.06/hr is deliberate — it makes the cost-weighted reasoning visible rather than trivial.
 
 ### `metrics.json`
 
 168 hourly CPU samples (7 full days) per instance. Long enough for daily and weekly periodicity to be distinguishable from a flat idle baseline.
 
-### `security_findings.json` â€” 8 findings
+### `security_findings.json` — 8 findings
 
 | ID | Severity | Finding |
 | :--- | :--- | :--- |
-| `FIND-101` | ðŸ”´ CRITICAL | S3 bucket publicly readable |
-| `FIND-102` | ðŸŸ  HIGH | SSH port 22 open to `0.0.0.0/0` |
-| `FIND-103` | ðŸŸ¡ MEDIUM | Outdated OS kernel with known CVE |
+| `FIND-101` | 🔴 CRITICAL | S3 bucket publicly readable |
+| `FIND-102` | 🟠 HIGH | SSH port 22 open to `0.0.0.0/0` |
+| `FIND-103` | 🟡 MEDIUM | Outdated OS kernel with known CVE |
 | *(+5 more)* | | Hardcoded keys, unencrypted volumes, IAM misconfigurations |
 
 ### `org_directory.json`
@@ -621,7 +622,7 @@ Employee records with `userId`, `name`, `email`, `team`, and escalation contact.
 1. Set `CLOUD_PROVIDER=aws` in `.env`
 2. Supply AWS credentials via IAM role or access key
 3. Implement `AwsCloudService` against the `CloudProviderAdapter` interface
-4. **No changes to tools, resources, prompts, or business logic** â€” the adapter absorbs the difference
+4. **No changes to tools, resources, prompts, or business logic** — the adapter absorbs the difference
 
 ---
 
@@ -629,14 +630,14 @@ Employee records with `userId`, `name`, `email`, `team`, and escalation contact.
 
 NitroCloud provides serverless hosting with a permanent HTTPS URL that survives redeployments.
 
-### Method A â€” NitroStudio Deploy
+### Method A — NitroStudio Deploy
 
 1. Open NitroStudio and connect your project directory
-2. Header bar â†’ **Link to Appâ€¦** â†’ **Create Cloud App** (or select existing)
-3. Click **Deploy** â€” NitroStudio runs `npm run build` locally, uploads the package, and opens a confirmation tab
+2. Header bar → **Link to App…** → **Create Cloud App** (or select existing)
+3. Click **Deploy** — NitroStudio runs `npm run build` locally, uploads the package, and opens a confirmation tab
 4. Click **Deploy Now**
 
-### Method B â€” GitHub Continuous Deployment
+### Method B — GitHub Continuous Deployment
 
 1. Push your repository:
    ```bash
@@ -644,14 +645,14 @@ NitroCloud provides serverless hosting with a permanent HTTPS URL that survives 
    git commit -m "CloudGuard AI"
    git push origin main
    ```
-2. [NitroCloud Dashboard](https://nitrostack.ai/cloud) â†’ **Apps â†’ cloudguard-ai â†’ MCP â†’ Deployments**
+2. [NitroCloud Dashboard](https://nitrostack.ai/cloud) → **Apps → cloudguard-ai → MCP → Deployments**
 3. Under **Deploy from GitHub**, authorize the NitroStack GitHub App
 4. Connect `rakesh94m/cloudguard-ai`, branch `main`
 5. **Link Repository &amp; Enable Auto-Deploy**
 
 Every push to `main` now triggers a live build.
 
-&gt; âš ï¸ **Critical:** copy every variable from your local `.env` into **NitroCloud â†’ Settings â†’ Environment Variables**. Your `.env` is gitignored and will not be deployed. Without this, GitHub and Slack integrations return `skipped` in production.
+&gt; ⚠️ **Critical:** copy every variable from your local `.env` into **NitroCloud → Settings → Environment Variables**. Your `.env` is gitignored and will not be deployed. Without this, GitHub and Slack integrations return `skipped` in production.
 
 ### Verify
 
@@ -662,7 +663,7 @@ curl https://&lt;your-app&gt;.nitrocloud.app/sse
 
 Both should return MCP protocol responses, not `404`.
 
-Your NitroCloud URL is stable across all future deployments â€” register it once in Claude or ChatGPT and it keeps working.
+Your NitroCloud URL is stable across all future deployments — register it once in Claude or ChatGPT and it keeps working.
 
 ---
 
@@ -674,13 +675,13 @@ Security posture is a design property of CloudGuard, not a configuration option.
 
 There is no `terminate_instance` tool. No `delete_bucket`. No `modify_security_group`. The MCP surface exposes read operations and *draft* generation only. An LLM connected to CloudGuard is structurally incapable of destroying infrastructure, because the capability was never published to it.
 
-Compare this to the permission-gated approach â€” where a `terminate` tool exists but is guarded by an IAM policy. That model fails open under misconfiguration. This one has nothing to misconfigure.
+Compare this to the permission-gated approach — where a `terminate` tool exists but is guarded by an IAM policy. That model fails open under misconfiguration. This one has nothing to misconfigure.
 
 `terminate-instance.tf.tmpl` exists in the remediation templates, but it produces Terraform *text* for a human to review and apply. CloudGuard never executes it.
 
 ### Credentials Are Never in Source
 
-Every secret â€” GitHub token, Slack webhook â€” loads from environment variables at startup. Nothing sensitive appears in any committed file. `.env` is gitignored; `.env.example` contains empty placeholders only.
+Every secret — GitHub token, Slack webhook — loads from environment variables at startup. Nothing sensitive appears in any committed file. `.env` is gitignored; `.env.example` contains empty placeholders only.
 
 When an integration is unconfigured, the corresponding tool returns:
 
@@ -695,7 +696,7 @@ Explicit and diagnosable, rather than a silent failure or a confusing 401.
 
 ### Human Approval Gate
 
-`HumanApprovalGuard` validates sign-off before state-changing operations proceed. Slack incident cards carry **Approve &amp; Apply Patch** and **Escalate to Lead** buttons â€” the workflow pauses for a human decision rather than auto-executing.
+`HumanApprovalGuard` validates sign-off before state-changing operations proceed. Slack incident cards carry **Approve &amp; Apply Patch** and **Escalate to Lead** buttons — the workflow pauses for a human decision rather than auto-executing.
 
 ### Runtime Input Validation
 
@@ -716,14 +717,14 @@ Open a GitHub issue with the `security` label, or contact the maintainers direct
 | Symptom | Cause | Fix |
 | :--- | :--- | :--- |
 | `Application initialized with 0 tools` | Decorator metadata not emitted | Confirm `"experimentalDecorators": true` and `"emitDecoratorMetadata": true` in `tsconfig.json`, and that `import 'reflect-metadata'` is the first line of `index.ts` |
-| Tools return empty arrays | Mock data not found | `readMockData` resolves relative to `process.cwd()` â€” run npm scripts from the project root, not from `src/` |
-| `status: "skipped"` on GitHub/Slack tools | Environment variables unset | Populate `.env` locally; populate NitroCloud â†’ Settings â†’ Environment Variables in production |
+| Tools return empty arrays | Mock data not found | `readMockData` resolves relative to `process.cwd()` — run npm scripts from the project root, not from `src/` |
+| `status: "skipped"` on GitHub/Slack tools | Environment variables unset | Populate `.env` locally; populate NitroCloud → Settings → Environment Variables in production |
 | GitHub returns `401 Bad credentials` | Token expired or wrong scope | Regenerate with `repo` scope (classic) or *Issues: Read and write* (fine-grained) |
 | GitHub returns `404 Not Found` | Repo path wrong, or token lacks access | Verify `GITHUB_REPO_OWNER` and `GITHUB_REPO_NAME` match an existing repo the token can reach |
 | Slack returns `no_service` | Webhook revoked or malformed | Regenerate the Incoming Webhook in your Slack app settings |
 | Claude can't connect | Wrong endpoint suffix | Claude needs `/mcp`; ChatGPT needs `/sse` |
 | ngrok URL stopped working | Free-tier URLs rotate per session | Restart ngrok and re-register, or deploy to NitroCloud for a stable URL |
-| `push declined â€” repository rule violations` | A secret was committed | Revoke the credential at its source, move it to `.env`, and rewrite the offending commit before pushing |
+| `push declined — repository rule violations` | A secret was committed | Revoke the credential at its source, move it to `.env`, and rewrite the offending commit before pushing |
 
 ### Local Debugging with NitroStudio
 
@@ -731,7 +732,7 @@ Open a GitHub issue with the `security` label, or contact the maintainers direct
 npm run dev
 ```
 
-Open `http://localhost:3001`. The Inspector lets you enumerate every registered tool and resource, invoke tools with arbitrary test inputs, view raw responses, and debug Zod schema validation errors â€” all without an LLM client attached.
+Open `http://localhost:3001`. The Inspector lets you enumerate every registered tool and resource, invoke tools with arbitrary test inputs, view raw responses, and debug Zod schema validation errors — all without an LLM client attached.
 
 ### Test Suite
 
@@ -746,22 +747,22 @@ npx tsx test-person4.ts    # workflow module
 
 ## Roadmap
 
-- [ ] **Live AWS adapter** â€” `AwsCloudService` against EC2, RDS, S3, and Security Hub
-- [ ] **Multi-cloud** â€” GCP and Azure providers behind the same adapter interface
-- [ ] **Slack interactivity endpoint** â€” handle Approve/Escalate button callbacks server-side
-- [ ] **Automated PR generation** â€” open a remediation pull request, not just an issue
-- [ ] **Cost forecasting** â€” project spend trajectory from historical utilization
-- [ ] **Anomaly detection** â€” statistical baselining instead of static thresholds
-- [ ] **RBAC** â€” scope tool access by requesting user's team and role
-- [ ] **Persistent audit store** â€” durable database backing for compliance retention
+- [ ] **Live AWS adapter** — `AwsCloudService` against EC2, RDS, S3, and Security Hub
+- [ ] **Multi-cloud** — GCP and Azure providers behind the same adapter interface
+- [ ] **Slack interactivity endpoint** — handle Approve/Escalate button callbacks server-side
+- [ ] **Automated PR generation** — open a remediation pull request, not just an issue
+- [ ] **Cost forecasting** — project spend trajectory from historical utilization
+- [ ] **Anomaly detection** — statistical baselining instead of static thresholds
+- [ ] **RBAC** — scope tool access by requesting user's team and role
+- [ ] **Persistent audit store** — durable database backing for compliance retention
 
 ---
 
 ## Contributing
 
-1. Preserve the layer boundaries: **Data â†’ Services â†’ MCP Surface â†’ Client**
+1. Preserve the layer boundaries: **Data → Services → MCP Surface → Client**
 2. Register new tools on `CloudGuardTools` in `src/index.ts`; extract shared logic into `src/modules/`
-3. Define a Zod schema for every input â€” no untyped parameters
+3. Define a Zod schema for every input — no untyped parameters
 4. Add coverage to the relevant `test-*.ts` file
 5. Document new tools in the [Tool Reference](#tool-reference) table
 6. TypeScript strict mode, no exceptions
@@ -773,7 +774,7 @@ npx tsx test-person4.ts    # workflow module
 
 Released under the MIT License.
 
-Submitted to the **NitroStack Ã— Amrita University Hackathon 2026**.
+Submitted to the **NitroStack × Amrita University Hackathon 2026**.
 
 ---
 
@@ -791,9 +792,9 @@ Submitted to the **NitroStack Ã— Amrita University Hackathon 2026**.
 
 **Built with NitroStack MCP Framework**
 
-*Cloud infrastructure your AI can audit â€” but never break.*
+*Cloud infrastructure your AI can audit — but never break.*
 
-[Deploy on NitroCloud â†’](https://nitrostack.ai/cloud)
+[Deploy on NitroCloud →](https://nitrostack.ai/cloud)
 
 &lt;/div&gt;
 </textarea>
@@ -803,7 +804,6 @@ Submitted to the **NitroStack Ã— Amrita University Hackathon 2026**.
         
         <script>
             const rawMarkdown = document.getElementById('markdown-source').value;
-            // Decode HTML entities safely in case any existed in code blocks
             const txt = document.createElement("textarea");
             txt.innerHTML = rawMarkdown;
             document.getElementById('content').innerHTML = marked.parse(txt.value);
@@ -815,4 +815,3 @@ Submitted to the **NitroStack Ã— Amrita University Hackathon 2026**.
     </footer>
 </body>
 </html>
-

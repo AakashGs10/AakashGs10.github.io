@@ -1,19 +1,20 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eBPF XDP Firewall - Aakash G S</title>
-    <!-- Google AdSense -->
+    
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9233292105405086" crossorigin="anonymous"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
         .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         
-        /* Markdown styling inside Tailwind prose */
         .markdown-body h1, .markdown-body h2, .markdown-body h3 { color: #e2e8f0; margin-top: 1.5em; margin-bottom: 0.5em; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 0.3em; }
         .markdown-body h1 { font-size: 2.25rem; border-bottom: 2px solid #38bdf8; padding-bottom: 0.5rem; }
         .markdown-body h2 { font-size: 1.75rem; }
@@ -24,7 +25,7 @@
         .markdown-body a { color: #38bdf8; text-decoration: underline; }
         .markdown-body code { background-color: #1e293b; padding: 0.2em 0.4em; border-radius: 3px; font-family: monospace; color: #fb7185; }
         .markdown-body pre { background-color: #1e293b; padding: 1.5em; border-radius: 8px; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #334155; }
-        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; font-size: 0.9rem; }
+        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; font-size: 0.9rem; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
         .markdown-body blockquote { border-left: 4px solid #38bdf8; padding-left: 1.5em; color: #94a3b8; font-style: italic; background-color: rgba(56, 189, 248, 0.05); padding: 1em; border-radius: 4px; }
         .markdown-body table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; }
         .markdown-body th, .markdown-body td { border: 1px solid #334155; padding: 0.75em; text-align: left; }
@@ -63,61 +64,61 @@ A high-performance, kernel-level network firewall built with **eBPF/XDP** (eXpre
 
 ##  Features
 
-- ** XDP-Level Packet Processing** â€” Operates at the earliest point in the Linux networking stack for maximum throughput and minimum latency
-- ** Deep Packet Inspection** â€” Parses Ethernet, IPv4, TCP, and UDP headers with full protocol awareness
-- ** Live Threat Intelligence** â€” Automatically fetches and injects malicious IP blocklists from the [IPsum](https://github.com/stamparm/ipsum) threat feed
-- ** IP Fragment Handling** â€” Tracks and blocks fragmented packets from known threats using an LRU hash map, preventing evasion via IP fragmentation
-- ** Prometheus Metrics** â€” Exports real-time telemetry including packet counts and active threat signatures
-- **Grafana Dashboards** â€” Full observability stack with pre-configured Docker Compose setup
-- ** Ring Buffer Telemetry** â€” Streams per-packet metadata (src/dst IP, ports, protocol, size) from kernel to userspace via eBPF ring buffer
+- ** XDP-Level Packet Processing** — Operates at the earliest point in the Linux networking stack for maximum throughput and minimum latency
+- ** Deep Packet Inspection** — Parses Ethernet, IPv4, TCP, and UDP headers with full protocol awareness
+- ** Live Threat Intelligence** — Automatically fetches and injects malicious IP blocklists from the [IPsum](https://github.com/stamparm/ipsum) threat feed
+- ** IP Fragment Handling** — Tracks and blocks fragmented packets from known threats using an LRU hash map, preventing evasion via IP fragmentation
+- ** Prometheus Metrics** — Exports real-time telemetry including packet counts and active threat signatures
+- **Grafana Dashboards** — Full observability stack with pre-configured Docker Compose setup
+- ** Ring Buffer Telemetry** — Streams per-packet metadata (src/dst IP, ports, protocol, size) from kernel to userspace via eBPF ring buffer
 
 ---
 
 ##  Architecture
 
 ```
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚                      NETWORK INTERFACE                  â”‚
-â”‚                         (NIC)                           â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                      â”‚ Incoming Packet
-                      â–¼
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚              XDP eBPF PROGRAM (Kernel Space)            â”‚
-â”‚                 xdp_telemetry.c                         â”‚
-â”‚                                                         â”‚
-â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
-â”‚  â”‚ Parse    â”‚â”€â”€â–¶â”‚ Blocklist  â”‚â”€â”€â–¶â”‚ Fragment Cache   â”‚  â”‚
-â”‚  â”‚ Headers  â”‚   â”‚ Lookup     â”‚   â”‚ (LRU Hash Map)   â”‚  â”‚
-â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â””â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”˜   â””â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
-â”‚                       â”‚                    â”‚            â”‚
-â”‚              â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â–¼â”€â”€â”€â”€â”€â”€â”€â”€â”  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â–¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
-â”‚              â”‚   XDP_DROP      â”‚  â”‚  Ring Buffer     â”‚  â”‚
-â”‚              â”‚  (Blocked IP)   â”‚  â”‚  (Telemetry)     â”‚  â”‚
-â”‚              â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â””â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
-â”‚                                            â”‚            â”‚
-â”‚              â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”           â”‚            â”‚
-â”‚              â”‚   XDP_PASS      â”‚           â”‚            â”‚
-â”‚              â”‚ (Clean Traffic) â”‚           â”‚            â”‚
-â”‚              â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜           â”‚            â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                                             â”‚
-                      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â–¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-                      â”‚     CONTROL PLANE (User Space)    â”‚
-                      â”‚          main.go (Go)             â”‚
-                      â”‚                                   â”‚
-                      â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
-                      â”‚  â”‚ Threat     â”‚ â”‚ Prometheus   â”‚  â”‚
-                      â”‚  â”‚ Intel      â”‚ â”‚ Metrics      â”‚  â”‚
-                      â”‚  â”‚ Ingestion  â”‚ â”‚ /metrics     â”‚  â”‚
-                      â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
-                      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                                               â”‚
-                      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â–¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-                      â”‚        OBSERVABILITY STACK        â”‚
-                      â”‚   Prometheus (:9090) + Grafana    â”‚
-                      â”‚         (Docker Compose)          â”‚
-                      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+┌─────────────────────────────────────────────────────────┐
+│                      NETWORK INTERFACE                  │
+│                         (NIC)                           │
+└─────────────────────┬───────────────────────────────────┘
+                      │ Incoming Packet
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│              XDP eBPF PROGRAM (Kernel Space)            │
+│                 xdp_telemetry.c                         │
+│                                                         │
+│  ┌──────────┐   ┌────────────┐   ┌──────────────────┐  │
+│  │ Parse    │──▶│ Blocklist  │──▶│ Fragment Cache   │  │
+│  │ Headers  │   │ Lookup     │   │ (LRU Hash Map)   │  │
+│  └──────────┘   └─────┬──────┘   └────────┬─────────┘  │
+│                       │                    │            │
+│              ┌────────▼────────┐  ┌────────▼─────────┐  │
+│              │   XDP_DROP      │  │  Ring Buffer     │  │
+│              │  (Blocked IP)   │  │  (Telemetry)     │  │
+│              └─────────────────┘  └────────┬─────────┘  │
+│                                            │            │
+│              ┌─────────────────┐           │            │
+│              │   XDP_PASS      │           │            │
+│              │ (Clean Traffic) │           │            │
+│              └─────────────────┘           │            │
+└────────────────────────────────────────────┼────────────┘
+                                             │
+                      ┌──────────────────────▼────────────┐
+                      │     CONTROL PLANE (User Space)    │
+                      │          main.go (Go)             │
+                      │                                   │
+                      │  ┌────────────┐ ┌──────────────┐  │
+                      │  │ Threat     │ │ Prometheus   │  │
+                      │  │ Intel      │ │ Metrics      │  │
+                      │  │ Ingestion  │ │ /metrics     │  │
+                      │  └────────────┘ └──────┬───────┘  │
+                      └────────────────────────┼──────────┘
+                                               │
+                      ┌────────────────────────▼──────────┐
+                      │        OBSERVABILITY STACK        │
+                      │   Prometheus (:9090) + Grafana    │
+                      │         (Docker Compose)          │
+                      └───────────────────────────────────┘
 ```
 
 ---
@@ -126,28 +127,28 @@ A high-performance, kernel-level network firewall built with **eBPF/XDP** (eXpre
 
 ```
 ebpf-firewall/
-â”œâ”€â”€ kernel/
-â”‚   â”œâ”€â”€ xdp_telemetry.c      # eBPF XDP kernel program (C)
-â”‚   â””â”€â”€ xdp_telemetry.o      # Compiled eBPF bytecode
-â”œâ”€â”€ control_plane/
-â”‚   â”œâ”€â”€ main.go               # Go control plane application
-â”‚   â””â”€â”€ xdp_telemetry.o      # eBPF object (loaded by control plane)
-â”œâ”€â”€ xdp_telemetry.c           # Root-level eBPF source
-â”œâ”€â”€ main.go                   # Root-level control plane entry point
-â”œâ”€â”€ Makefile                  # Build automation for eBPF compilation
-â”œâ”€â”€ docker-compose.yml        # Prometheus + Grafana stack
-â”œâ”€â”€ prometheus.yml            # Prometheus scrape configuration
-â”œâ”€â”€ threat.dat                # Local threat data cache
-â”œâ”€â”€ go.mod                    # Go module dependencies
-â””â”€â”€ go.sum                    # Go dependency checksums
+├── kernel/
+│   ├── xdp_telemetry.c      # eBPF XDP kernel program (C)
+│   └── xdp_telemetry.o      # Compiled eBPF bytecode
+├── control_plane/
+│   ├── main.go               # Go control plane application
+│   └── xdp_telemetry.o      # eBPF object (loaded by control plane)
+├── xdp_telemetry.c           # Root-level eBPF source
+├── main.go                   # Root-level control plane entry point
+├── Makefile                  # Build automation for eBPF compilation
+├── docker-compose.yml        # Prometheus + Grafana stack
+├── prometheus.yml            # Prometheus scrape configuration
+├── threat.dat                # Local threat data cache
+├── go.mod                    # Go module dependencies
+└── go.sum                    # Go dependency checksums
 ```
 
 ---
 
 ##  Prerequisites
 
-- **Linux** with kernel â‰¥ 5.15 (eBPF &amp; XDP support required)
-- **Go** â‰¥ 1.25
+- **Linux** with kernel ≥ 5.15 (eBPF &amp; XDP support required)
+- **Go** ≥ 1.25
 - **Clang/LLVM** (for compiling eBPF C programs)
 - **libbpf** development headers
 - **Docker &amp; Docker Compose** (for the observability stack)
@@ -242,24 +243,24 @@ The control plane will:
 
 The XDP program (`xdp_telemetry.c`) runs at the **NIC driver level** and performs:
 
-1. **Header Parsing** â€” Validates and extracts Ethernet â†’ IPv4 â†’ TCP/UDP headers
-2. **Blocklist Lookup** â€” Checks source IPs against a kernel-space hash map (`BPF_MAP_TYPE_HASH`) populated with known malicious IPs
-3. **Fragment Tracking** â€” Uses an LRU hash map to track fragmented packet flows, blocking subsequent fragments from threats
-4. **Telemetry Emission** â€” Sends packet metadata to userspace via a ring buffer (`BPF_MAP_TYPE_RINGBUF`)
-5. **Verdict** â€” Returns `XDP_DROP` for blocked IPs or `XDP_PASS` for clean traffic
+1. **Header Parsing** — Validates and extracts Ethernet → IPv4 → TCP/UDP headers
+2. **Blocklist Lookup** — Checks source IPs against a kernel-space hash map (`BPF_MAP_TYPE_HASH`) populated with known malicious IPs
+3. **Fragment Tracking** — Uses an LRU hash map to track fragmented packet flows, blocking subsequent fragments from threats
+4. **Telemetry Emission** — Sends packet metadata to userspace via a ring buffer (`BPF_MAP_TYPE_RINGBUF`)
+5. **Verdict** — Returns `XDP_DROP` for blocked IPs or `XDP_PASS` for clean traffic
 
 ### User Space (Go Control Plane)
 
 The Go application (`main.go`) handles:
 
-1. **eBPF Lifecycle** â€” Loads the compiled eBPF object, attaches the XDP hook, and manages map references
-2. **Threat Intelligence** â€” Periodically fetches the [IPsum](https://github.com/stamparm/ipsum) blocklist and injects up to 10,000 malicious IPs into the kernel hash map
-3. **Telemetry Consumer** â€” Reads per-packet events from the ring buffer and logs them
-4. **Metrics Export** â€” Exposes Prometheus counters and gauges for external scraping
+1. **eBPF Lifecycle** — Loads the compiled eBPF object, attaches the XDP hook, and manages map references
+2. **Threat Intelligence** — Periodically fetches the [IPsum](https://github.com/stamparm/ipsum) blocklist and injects up to 10,000 malicious IPs into the kernel hash map
+3. **Telemetry Consumer** — Reads per-packet events from the ring buffer and logs them
+4. **Metrics Export** — Exposes Prometheus counters and gauges for external scraping
 
 ---
 
-## âš™ï¸ eBPF Maps
+## ⚙️ eBPF Maps
 
 | Map | Type | Max Entries | Purpose |
 |-----|------|-------------|---------|
@@ -271,7 +272,7 @@ The Go application (`main.go`) handles:
 
 ##  Threat Intelligence
 
-The firewall automatically fetches live threat data from the [IPsum](https://github.com/stamparm/ipsum) project â€” a curated, daily-updated list of suspicious and malicious IP addresses sourced from 30+ threat intelligence feeds.
+The firewall automatically fetches live threat data from the [IPsum](https://github.com/stamparm/ipsum) project — a curated, daily-updated list of suspicious and malicious IP addresses sourced from 30+ threat intelligence feeds.
 
 - **Feed URL**: `https://raw.githubusercontent.com/stamparm/ipsum/master/ipsum.txt`
 - **Update Interval**: Periodic (configurable in source)
@@ -308,7 +309,7 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 
 ##  Author
 
-**Aakash G S** â€” [@AakashGs10](https://github.com/AakashGs10)
+**Aakash G S** — [@AakashGs10](https://github.com/AakashGs10)
 
 ---
 
@@ -319,7 +320,6 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
         
         <script>
             const rawMarkdown = document.getElementById('markdown-source').value;
-            // Decode HTML entities safely in case any existed in code blocks
             const txt = document.createElement("textarea");
             txt.innerHTML = rawMarkdown;
             document.getElementById('content').innerHTML = marked.parse(txt.value);
@@ -331,4 +331,3 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
     </footer>
 </body>
 </html>
-

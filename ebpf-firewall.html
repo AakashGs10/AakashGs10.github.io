@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +48,7 @@ If you've ever dealt with network security or traffic routing at an enterprise s
 When under a Distributed Denial of Service (DDoS) attack, this overhead is exactly what kills your server. The CPU maxes out just trying to *receive* the malicious packets. I decided to bypass this bottleneck entirely by building a high-performance firewall using **eBPF (Extended Berkeley Packet Filter)** and **XDP (eXpress Data Path)**.
 
 ## The Core Concept: Moving Security to the Hardware
-Instead of waiting for the packet to travel up the OS stack, XDP allows us to attach a custom program directly to the Network Interface Card (NIC) driver. This means we can inspect, modify, drop, or forward packets the exact millisecond they hit the hardware—before the Linux kernel even knows they exist.
+Instead of waiting for the packet to travel up the OS stack, XDP allows us to attach a custom program directly to the Network Interface Card (NIC) driver. This means we can inspect, modify, drop, or forward packets the exact millisecond they hit the hardwareâ€”before the Linux kernel even knows they exist.
 
 ## Architecture &amp; Low-Level Implementation
 Writing for the kernel requires strict safety guarantees. I wrote the core packet-filtering logic in **C**. This C code is compiled into eBPF bytecode using LLVM/Clang. Before the Linux kernel allows this bytecode to run, it passes it through the in-kernel eBPF verifier, which mathematically proves that the code will not crash the system or loop infinitely.
@@ -92,7 +92,8 @@ eBPF is undeniably the future of Linux networking, observability, and security. 
         </div>
     </main>
     <footer class="mt-auto pb-8 text-slate-500 text-sm">
-        &copy; 2026 Aakash G S. All rights reserved. Built with modern web technologies.
+        &copy; 2026 Aakash G S. All rights reserved. 
     </footer>
 </body>
 </html>
+

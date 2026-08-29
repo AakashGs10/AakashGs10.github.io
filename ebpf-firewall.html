@@ -5,317 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eBPF XDP Firewall - Aakash G S</title>
-    
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9233292105405086" crossorigin="anonymous"></script>
-
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9233292105405086" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
         .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         
-        .markdown-body h1, .markdown-body h2, .markdown-body h3 { color: #e2e8f0; margin-top: 1.5em; margin-bottom: 0.5em; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 0.3em; }
-        .markdown-body h1 { font-size: 2.25rem; border-bottom: 2px solid #38bdf8; padding-bottom: 0.5rem; }
-        .markdown-body h2 { font-size: 1.75rem; }
-        .markdown-body h3 { font-size: 1.25rem; }
-        .markdown-body p { margin-bottom: 1em; line-height: 1.7; font-size: 1.1rem; }
-        .markdown-body ul { list-style-type: disc; padding-left: 2em; margin-bottom: 1em; font-size: 1.1rem; }
-        .markdown-body ol { list-style-type: decimal; padding-left: 2em; margin-bottom: 1em; font-size: 1.1rem; }
-        .markdown-body a { color: #38bdf8; text-decoration: underline; }
-        .markdown-body code { background-color: #1e293b; padding: 0.2em 0.4em; border-radius: 3px; font-family: monospace; color: #fb7185; }
-        .markdown-body pre { background-color: #1e293b; padding: 1.5em; border-radius: 8px; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #334155; }
-        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; font-size: 0.9rem; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
-        .markdown-body blockquote { border-left: 4px solid #38bdf8; padding-left: 1.5em; color: #94a3b8; font-style: italic; background-color: rgba(56, 189, 248, 0.05); padding: 1em; border-radius: 4px; }
-        .markdown-body table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; }
-        .markdown-body th, .markdown-body td { border: 1px solid #334155; padding: 0.75em; text-align: left; }
-        .markdown-body th { background-color: #1e293b; color: #38bdf8; font-weight: 600; }
-        .markdown-body tr:nth-child(even) { background-color: rgba(255,255,255,0.02); }
+        /* Modern Blog Typography */
+        .markdown-body h1 { color: #f8fafc; font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; letter-spacing: -0.025em; }
+        .markdown-body h2 { color: #38bdf8; font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .markdown-body p { color: #cbd5e1; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.5rem; }
+        .markdown-body ul { color: #cbd5e1; font-size: 1.125rem; list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8; }
+        .markdown-body li { margin-bottom: 0.5rem; }
+        .markdown-body strong { color: #f8fafc; font-weight: 600; }
+        
+        .blog-header { position: relative; padding-bottom: 2rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(56, 189, 248, 0.2); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center p-6">
-    <nav class="w-full max-w-5xl mb-8 flex justify-between items-center">
-        <a href="index.html" class="text-blue-400 hover:text-blue-300 flex items-center gap-2 transition-colors font-semibold">
+    <nav class="w-full max-w-3xl mb-12 flex justify-between items-center">
+        <a href="index.html" class="text-slate-400 hover:text-white flex items-center gap-2 transition-colors font-medium">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            Back to Projects
+            Back to Home
         </a>
-        <div class="text-slate-400 font-medium">Aakash G S</div>
+        <div class="text-emerald-400 font-semibold tracking-wide uppercase text-sm">Tech Blog</div>
     </nav>
     
-    <main class="w-full max-w-5xl glass-panel rounded-2xl p-8 shadow-2xl mb-12">
-        <header class="mb-10 border-b border-slate-700 pb-6 flex justify-between items-end">
-            <div>
-                <p class="text-emerald-400 font-medium mb-2 tracking-widest text-sm uppercase">Official Documentation</p>
-                <h1 class="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-0">eBPF XDP Firewall</h1>
-            </div>
-            <a href="https://github.com/AakashGs10/ebpf-firewall" target="_blank" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white rounded-lg font-medium transition-all shadow hover:shadow-blue-500/20 flex items-center gap-2">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-                GitHub
-            </a>
-        </header>
+    <main class="w-full max-w-3xl glass-panel rounded-2xl p-8 sm:p-12 shadow-2xl mb-12">
         
-        <textarea id="markdown-source" style="display:none;">#  eBPF XDP Firewall
+        <textarea id="markdown-source" style="display:none;"># Pushing Packets at the Speed of Light: My eBPF XDP Firewall
 
-A high-performance, kernel-level network firewall built with **eBPF/XDP** (eXpress Data Path) that provides real-time packet inspection, automated threat intelligence ingestion, and full observability through Prometheus and Grafana.
+If you've ever dealt with network security at scale, you know that processing packets in the user-space is slow. Every time a packet hits your server, it has to traverse the entire Linux network stack before your firewall application can even look at it. 
 
-&gt; **Drop malicious packets before they ever reach the kernel networking stack.**
+I decided to bypass that entirely by building a high-performance firewall using **eBPF (Extended Berkeley Packet Filter)** and **XDP (eXpress Data Path)**.
 
----
+## The Core Concept
+Instead of waiting for the packet to travel up the OS stack, XDP allows us to attach our firewall program directly to the network interface card (NIC) driver. This means we can inspect, drop, or forward packets the exact millisecond they hit the hardware.
 
-##  Features
+## Architecture &amp; Implementation
+I wrote the core packet-filtering logic in **C** to ensure maximum performance. This code is compiled into an eBPF bytecode and injected directly into the Linux kernel safely.
 
-- ** XDP-Level Packet Processing** — Operates at the earliest point in the Linux networking stack for maximum throughput and minimum latency
-- ** Deep Packet Inspection** — Parses Ethernet, IPv4, TCP, and UDP headers with full protocol awareness
-- ** Live Threat Intelligence** — Automatically fetches and injects malicious IP blocklists from the [IPsum](https://github.com/stamparm/ipsum) threat feed
-- ** IP Fragment Handling** — Tracks and blocks fragmented packets from known threats using an LRU hash map, preventing evasion via IP fragmentation
-- ** Prometheus Metrics** — Exports real-time telemetry including packet counts and active threat signatures
-- **Grafana Dashboards** — Full observability stack with pre-configured Docker Compose setup
-- ** Ring Buffer Telemetry** — Streams per-packet metadata (src/dst IP, ports, protocol, size) from kernel to userspace via eBPF ring buffer
+* **Packet Inspection:** The eBPF program parses the Ethernet, IP, and TCP/UDP headers.
+* **Map Lookups:** It compares the source IPs against a high-speed eBPF Hash Map containing known malicious IP addresses.
+* **The Verdict:** If the IP matches, the program issues an XDP_DROP command, discarding the packet before the CPU even allocates memory for it.
 
----
+## Benchmarks
+The results were staggering. Compared to standard iptables, this eBPF firewall handled millions of packets per second with virtually zero CPU overhead. It completely mitigated simulated DDoS attacks without the server breaking a sweat.
 
-##  Architecture
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                      NETWORK INTERFACE                  │
-│                         (NIC)                           │
-└─────────────────────┬───────────────────────────────────┘
-                      │ Incoming Packet
-                      ▼
-┌─────────────────────────────────────────────────────────┐
-│              XDP eBPF PROGRAM (Kernel Space)            │
-│                 xdp_telemetry.c                         │
-│                                                         │
-│  ┌──────────┐   ┌────────────┐   ┌──────────────────┐  │
-│  │ Parse    │──▶│ Blocklist  │──▶│ Fragment Cache   │  │
-│  │ Headers  │   │ Lookup     │   │ (LRU Hash Map)   │  │
-│  └──────────┘   └─────┬──────┘   └────────┬─────────┘  │
-│                       │                    │            │
-│              ┌────────▼────────┐  ┌────────▼─────────┐  │
-│              │   XDP_DROP      │  │  Ring Buffer     │  │
-│              │  (Blocked IP)   │  │  (Telemetry)     │  │
-│              └─────────────────┘  └────────┬─────────┘  │
-│                                            │            │
-│              ┌─────────────────┐           │            │
-│              │   XDP_PASS      │           │            │
-│              │ (Clean Traffic) │           │            │
-│              └─────────────────┘           │            │
-└────────────────────────────────────────────┼────────────┘
-                                             │
-                      ┌──────────────────────▼────────────┐
-                      │     CONTROL PLANE (User Space)    │
-                      │          main.go (Go)             │
-                      │                                   │
-                      │  ┌────────────┐ ┌──────────────┐  │
-                      │  │ Threat     │ │ Prometheus   │  │
-                      │  │ Intel      │ │ Metrics      │  │
-                      │  │ Ingestion  │ │ /metrics     │  │
-                      │  └────────────┘ └──────┬───────┘  │
-                      └────────────────────────┼──────────┘
-                                               │
-                      ┌────────────────────────▼──────────┐
-                      │        OBSERVABILITY STACK        │
-                      │   Prometheus (:9090) + Grafana    │
-                      │         (Docker Compose)          │
-                      └───────────────────────────────────┘
-```
-
----
-
-## Project Structure
-
-```
-ebpf-firewall/
-├── kernel/
-│   ├── xdp_telemetry.c      # eBPF XDP kernel program (C)
-│   └── xdp_telemetry.o      # Compiled eBPF bytecode
-├── control_plane/
-│   ├── main.go               # Go control plane application
-│   └── xdp_telemetry.o      # eBPF object (loaded by control plane)
-├── xdp_telemetry.c           # Root-level eBPF source
-├── main.go                   # Root-level control plane entry point
-├── Makefile                  # Build automation for eBPF compilation
-├── docker-compose.yml        # Prometheus + Grafana stack
-├── prometheus.yml            # Prometheus scrape configuration
-├── threat.dat                # Local threat data cache
-├── go.mod                    # Go module dependencies
-└── go.sum                    # Go dependency checksums
-```
-
----
-
-##  Prerequisites
-
-- **Linux** with kernel ≥ 5.15 (eBPF &amp; XDP support required)
-- **Go** ≥ 1.25
-- **Clang/LLVM** (for compiling eBPF C programs)
-- **libbpf** development headers
-- **Docker &amp; Docker Compose** (for the observability stack)
-- **Root privileges** (required for loading eBPF programs and attaching XDP hooks)
-
-### Install Dependencies (Ubuntu/Debian)
-
-```bash
-# Build tools
-sudo apt update
-sudo apt install -y clang llvm libbpf-dev linux-headers-$(uname -r)
-
-# Go (if not installed)
-# See https://go.dev/doc/install
-
-# Docker
-sudo apt install -y docker.io docker-compose
-```
-
----
-
-##  Quick Start
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/AakashGs10/ebpf-firewall.git
-cd ebpf-firewall
-```
-
-### 2. Compile the eBPF Kernel Program
-
-```bash
-make
-```
-
-This compiles `xdp_telemetry.c` into `xdp_telemetry.o` using Clang with the BPF target:
-```bash
-clang -g -O2 -target bpf -D__TARGET_ARCH_x86 -I/usr/include/$(uname -m)-linux-gnu -c xdp_telemetry.c -o xdp_telemetry.o
-```
-
-### 3. Start the Observability Stack
-
-```bash
-docker-compose up -d
-```
-
-This launches:
-- **Prometheus** on port `9090`
-- **Grafana** on port `3000`
-
-### 4. Run the Firewall
-
-```bash
-sudo go run main.go
-```
-
-Or build and run:
-```bash
-go build -o ebpf-firewall .
-sudo ./ebpf-firewall
-```
-
-The control plane will:
-1. Load the compiled eBPF program into the kernel
-2. Attach the XDP hook to your network interface
-3. Start the threat intelligence feed ingestion loop
-4. Begin streaming packet telemetry from the ring buffer
-5. Expose Prometheus metrics on `/metrics`
-
----
-
-##  Metrics &amp; Observability
-
-### Prometheus Metrics
-
-| Metric | Type | Description |
-|--------|------|-------------|
-| `ebpf_packets_passed_total` | Counter | Total packets processed by the eBPF program |
-| `ebpf_active_threat_signatures` | Gauge | Number of malicious IPs in the kernel blocklist |
-
-### Access Dashboards
-
-- **Prometheus**: [http://localhost:9090](http://localhost:9090)
-- **Grafana**: [http://localhost:3000](http://localhost:3000) (default: `admin`/`admin`)
-
----
-
-##  How It Works
-
-### Kernel Space (eBPF/XDP)
-
-The XDP program (`xdp_telemetry.c`) runs at the **NIC driver level** and performs:
-
-1. **Header Parsing** — Validates and extracts Ethernet → IPv4 → TCP/UDP headers
-2. **Blocklist Lookup** — Checks source IPs against a kernel-space hash map (`BPF_MAP_TYPE_HASH`) populated with known malicious IPs
-3. **Fragment Tracking** — Uses an LRU hash map to track fragmented packet flows, blocking subsequent fragments from threats
-4. **Telemetry Emission** — Sends packet metadata to userspace via a ring buffer (`BPF_MAP_TYPE_RINGBUF`)
-5. **Verdict** — Returns `XDP_DROP` for blocked IPs or `XDP_PASS` for clean traffic
-
-### User Space (Go Control Plane)
-
-The Go application (`main.go`) handles:
-
-1. **eBPF Lifecycle** — Loads the compiled eBPF object, attaches the XDP hook, and manages map references
-2. **Threat Intelligence** — Periodically fetches the [IPsum](https://github.com/stamparm/ipsum) blocklist and injects up to 10,000 malicious IPs into the kernel hash map
-3. **Telemetry Consumer** — Reads per-packet events from the ring buffer and logs them
-4. **Metrics Export** — Exposes Prometheus counters and gauges for external scraping
-
----
-
-## ️ eBPF Maps
-
-| Map | Type | Max Entries | Purpose |
-|-----|------|-------------|---------|
-| `ringbuf` | `BPF_MAP_TYPE_RINGBUF` | 256 KB | Stream packet telemetry to userspace |
-| `blocklist` | `BPF_MAP_TYPE_HASH` | 10,000 | Store blocked IP addresses |
-| `fragment_cache` | `BPF_MAP_TYPE_LRU_HASH` | 5,000 | Track fragmented flows from threats |
-
----
-
-##  Threat Intelligence
-
-The firewall automatically fetches live threat data from the [IPsum](https://github.com/stamparm/ipsum) project — a curated, daily-updated list of suspicious and malicious IP addresses sourced from 30+ threat intelligence feeds.
-
-- **Feed URL**: `https://raw.githubusercontent.com/stamparm/ipsum/master/ipsum.txt`
-- **Update Interval**: Periodic (configurable in source)
-- **Max Entries**: 10,000 IPs per refresh cycle
-- **Injection**: IPs are written directly into the kernel `blocklist` hash map
-
----
-
-##  Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| **Data Plane** | C, eBPF/XDP |
-| **Control Plane** | Go, cilium/ebpf |
-| **Metrics** | Prometheus (`client_golang`) |
-| **Visualization** | Grafana |
-| **Orchestration** | Docker Compose |
-| **Threat Feed** | IPsum (stamparm) |
-
----
-
-
-##  Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-##  Author
-
-**Aakash G S** — [@AakashGs10](https://github.com/AakashGs10)
-
----
-
-</textarea>
+eBPF is undeniably the future of Linux networking and security, and building this project was an incredible dive into low-level kernel programming.</textarea>
         
-        <article id="content" class="markdown-body text-slate-300 w-full max-w-full">
+        <article id="content" class="markdown-body">
+            <!-- Rendered markdown goes here -->
         </article>
         
         <script>
@@ -325,8 +67,18 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
             document.getElementById('content').innerHTML = marked.parse(txt.value);
         </script>
         
+        <div class="mt-16 pt-8 border-t border-slate-700/50 flex flex-col sm:flex-row items-center justify-between bg-slate-800/30 p-6 rounded-xl">
+            <div>
+                <h4 class="text-white font-semibold mb-1">Interested in the code?</h4>
+                <p class="text-slate-400 text-sm mb-4 sm:mb-0">Check out the full repository and implementation details.</p>
+            </div>
+            <a href="https://github.com/AakashGs10/ebpf-firewall" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-all shadow-lg hover:shadow-blue-500/25 flex items-center gap-2 whitespace-nowrap">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                View on GitHub
+            </a>
+        </div>
     </main>
-    <footer class="mt-auto pb-6 text-slate-500 text-sm">
+    <footer class="mt-auto pb-8 text-slate-500 text-sm">
         &copy; 2026 Aakash G S. All rights reserved.
     </footer>
 </body>

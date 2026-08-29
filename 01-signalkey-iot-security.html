@@ -1,4 +1,3 @@
-﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +25,7 @@
     
         .markdown-body code { background-color: #1e293b; padding: 0.2em 0.4em; border-radius: 3px; font-family: monospace; color: #fb7185; }
         .markdown-body pre { background-color: #1e293b; padding: 1.5em; border-radius: 8px; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #334155; }
-        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; }
+        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
         .markdown-body blockquote { border-left: 4px solid #38bdf8; padding-left: 1.5em; color: #94a3b8; font-style: italic; background-color: rgba(56, 189, 248, 0.05); padding: 1em; border-radius: 4px; }
     </style>
 </head>
@@ -43,12 +42,12 @@
         
         <textarea id="markdown-source" style="display:none;"># SignalKey: Rethinking IoT Security Through Hardware Fingerprinting
 
-The Internet of Things (IoT) is notoriously insecure. From default passwords and unencrypted firmware to easily interceptable API keys, cheap smart devicesâ€”like security cameras, smart thermostats, and industrial sensorsâ€”are constantly being hijacked and turned into massive global botnets. 
+The Internet of Things (IoT) is notoriously insecure. From default passwords and unencrypted firmware to easily interceptable API keys, cheap smart devices - like security cameras, smart thermostats, and industrial sensors - are constantly being hijacked and turned into massive global botnets. 
 
 With **SignalKey**, I wanted to explore a completely different, cutting-edge approach to authentication. What if we didn't use passwords, tokens, or digital certificates at all? What if the physical, analog radio signal of the device itself acted as the unforgeable password?
 
 ## The Vulnerability of Traditional IoT Auth
-Most IoT devices authenticate using static tokens or MAC addresses. The problem is that digital data is perfectly replicable. A MAC address can be easily spoofed by an attacker with a  Software-Defined Radio (SDR) and basic Python scripts. Once the MAC address is spoofed, the network assumes the malicious payload is coming from a trusted device.
+Most IoT devices authenticate using static tokens or MAC addresses. The problem is that digital data is perfectly replicable. A MAC address can be easily spoofed by an attacker with a cheap Software-Defined Radio (SDR) and basic Python scripts. Once the MAC address is spoofed, the network assumes the malicious payload is coming from a trusted device.
 
 ## The SignalKey Solution: Analog Fingerprinting
 SignalKey utilizes physical layer (PHY) characteristics to uniquely fingerprint a transmitting device. 
@@ -64,7 +63,7 @@ When a factory manufactures Wi-Fi or Bluetooth chips, microscopic manufacturing 
 If an attacker attempts to hack the network by perfectly spoofing a trusted MAC address and sending malicious commands, SignalKey easily stops them. Why? Because while the attacker can copy the digital data perfectly, they cannot physically replicate the microscopic hardware imperfections of the trusted device's radio chip. The ML model instantly detects that the "radio voice" is different and rejects the transmission.
 
 ## Conclusion and Future Scope
-This project was a fascinating intersection of cybersecurity, hardware electronics, signal processing, and machine learning. SignalKey proves that we can add a robust, nearly unhackable layer of security to IoT ecosystems without requiring heavy cryptographic processingâ€”which is crucial for low-power, battery-operated devices that can't afford the CPU overhead of traditional encryption.</textarea>
+This project was a fascinating intersection of cybersecurity, hardware electronics, signal processing, and machine learning. SignalKey proves that we can add a robust, nearly unhackable layer of security to IoT ecosystems without requiring heavy cryptographic processing - which is crucial for low-power, battery-operated devices that can't afford the CPU overhead of traditional encryption.</textarea>
         
         <article id="content" class="markdown-body">
             <!-- Rendered markdown goes here -->
@@ -89,8 +88,7 @@ This project was a fascinating intersection of cybersecurity, hardware electroni
         </div>
     </main>
     <footer class="mt-auto pb-8 text-slate-500 text-sm">
-        &copy; 2026 Aakash G S. All rights reserved. 
+        &copy; 2026 Aakash G S. All rights reserved.
     </footer>
 </body>
 </html>
-

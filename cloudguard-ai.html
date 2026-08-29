@@ -1,4 +1,3 @@
-﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +25,7 @@
     
         .markdown-body code { background-color: #1e293b; padding: 0.2em 0.4em; border-radius: 3px; font-family: monospace; color: #fb7185; }
         .markdown-body pre { background-color: #1e293b; padding: 1.5em; border-radius: 8px; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #334155; }
-        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; }
+        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
         .markdown-body blockquote { border-left: 4px solid #38bdf8; padding-left: 1.5em; color: #94a3b8; font-style: italic; background-color: rgba(56, 189, 248, 0.05); padding: 1em; border-radius: 4px; }
     </style>
 </head>
@@ -45,10 +44,10 @@
 
 Welcome to my deep dive into **CloudGuard AI**, a project I built to tackle one of the most pressing, complex issues in modern infrastructure: cloud security at scale.
 
-As organizations move their entire operations to the cloud, the attack surface has expanded exponentially. Traditional rule-based firewalls and security groups simply aren't enough to catch sophisticated, slow-moving attacks or zero-day exploits. Attackers are increasingly using compromised valid credentials or exploiting minute misconfigurations, making their lateral movement look like legitimate traffic. That's exactly where CloudGuard AI steps in.
+As organizations move their entire operations to the cloud, the attack surface has expanded exponentially. Traditional rule-based firewalls and security groups simply aren't enough to catch sophisticated, slow-moving attacks or zero-day exploits. Attackers are increasingly using compromised valid credentials or exploiting minute misconfigurations, making their lateral movement look like legitimate traffic. That is exactly where CloudGuard AI steps in.
 
 ## The Vision and The Problem
-I wanted to build a security platform that doesn't just rely on static, manually updated rules. Instead, I envisioned a system that actually *learns* the baseline behavior of a cloud ecosystem. By understanding what "normal" looks likeâ€”down to the exact API calls a specific IAM role makes at 2:00 AM on a Tuesdayâ€”the system can instantly flag anomalies. 
+I wanted to build a security platform that doesn't just rely on static, manually updated rules. Instead, I envisioned a system that actually *learns* the baseline behavior of a cloud ecosystem. By understanding what "normal" looks like - down to the exact API calls a specific IAM role makes at 2:00 AM on a Tuesday - the system can instantly flag anomalies. 
 
 Whether it's an unusual spike in database read queries, an IAM user accessing S3 buckets from a new geographical location, or a sudden burst of outbound traffic from a supposedly private EC2 instance, CloudGuard AI is designed to catch it.
 
@@ -102,8 +101,7 @@ Building CloudGuard AI taught me a massive amount about distributed systems, big
         </div>
     </main>
     <footer class="mt-auto pb-8 text-slate-500 text-sm">
-        &copy; 2026 Aakash G S. All rights reserved. 
+        &copy; 2026 Aakash G S. All rights reserved.
     </footer>
 </body>
 </html>
-

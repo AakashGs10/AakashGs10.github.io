@@ -56,7 +56,7 @@
         
         <textarea id="markdown-source" style="display:none;">&lt;div align="center"&gt;
 
-# CloudGuard AI 🛡️
+# CloudGuard AI ️
 
 **Autonomous FinOps &amp; SecOps Agent for Enterprise Cloud Infrastructure**
 
@@ -68,7 +68,7 @@ An MCP server that lets any LLM audit cloud spend, detect security exposure, and
 [![Node](https://img.shields.io/badge/Node-18%2B-339933?style=for-the-badge&amp;logo=node.js&amp;logoColor=white)](https://nodejs.org/)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-**Track:** 🤖 Enterprise AI &amp; Workplace Automation
+**Track:**  Enterprise AI &amp; Workplace Automation
 **Event:** NitroStack × Amrita University Hackathon 2026
 
 &lt;/div&gt;
@@ -112,7 +112,7 @@ Finding these requires correlating four separate data sources — inventory, uti
 
 ## What CloudGuard AI Does
 
-### 💰 Cost Waste Detection (FinOps)
+###  Cost Waste Detection (FinOps)
 
 Correlates hourly cost rates against CPU utilization telemetry to surface infrastructure that costs money without doing work.
 
@@ -123,7 +123,7 @@ Correlates hourly cost rates against CPU utilization telemetry to surface infras
 
 The threshold is an *input*, not a constant. The reasoning about what the numbers mean happens in the model, which is the entire point of exposing this over MCP instead of writing a dashboard.
 
-### 🔐 Security Posture Assessment (SecOps)
+###  Security Posture Assessment (SecOps)
 
 Audits findings across severity tiers and resolves them to accountable humans.
 
@@ -132,7 +132,7 @@ Audits findings across severity tiers and resolves them to accountable humans.
 - Resolves resource ownership through an enterprise directory lookup — by user ID, team name, or partial name match
 - Surfaces escalation contacts so alerts route to a team lead, not into a void
 
-### 🔧 Remediation Workflow
+###  Remediation Workflow
 
 Generates the fix, files the ticket, notifies the channel, and closes the loop.
 
@@ -142,7 +142,7 @@ Generates the fix, files the ticket, notifies the channel, and closes the loop.
 - Closes resolved GitHub issues programmatically with `state_reason: completed`
 - Exposes a single atomic `run_full_secops_audit` that chains the entire pipeline for one-command execution
 
-### 📊 Executive Reporting
+###  Executive Reporting
 
 Compiles a posture scorecard suitable for a leadership readout: overall security score, per-framework compliance percentages (SOC 2 Type II, CIS AWS Foundations, HIPAA), financial impact, and live telemetry health.
 
@@ -344,8 +344,8 @@ npm run dev
 You should see:
 
 ```
-✅ Application initialized with 10 tools, 1 resources, 1 prompts
-🌐 MCP Streamable HTTP transport listening on http://localhost:3000/mcp
+ Application initialized with 10 tools, 1 resources, 1 prompts
+ MCP Streamable HTTP transport listening on http://localhost:3000/mcp
 ```
 
 | Endpoint | Purpose |
@@ -406,7 +406,7 @@ AWS_REGION=us-east-1
 
 **Slack Incoming Webhook** — [api.slack.com/apps](https://api.slack.com/apps) → your app → *Incoming Webhooks* → *Add New Webhook to Workspace* → select the target channel.
 
-&gt; ⚠️ **Never commit `.env`.** It is listed in `.gitignore`. If a credential is ever exposed, revoke it immediately at its source rather than relying on removing it from the repository — pushed secrets should be treated as compromised.
+&gt; ️ **Never commit `.env`.** It is listed in `.gitignore`. If a credential is ever exposed, revoke it immediately at its source rather than relying on removing it from the repository — pushed secrets should be treated as compromised.
 
 ---
 
@@ -590,8 +590,8 @@ CloudGuard ships with a complete synthetic environment so the full pipeline runs
 
 | Instance | Rate | Expected Verdict |
 | :--- | ---: | :--- |
-| `legacy-analytics-gpu` | $1.20/hr | 🔴 **Waste** — GPU node, sustained low CPU |
-| `jenkins-build-executor-orphaned` | $0.768/hr | 🔴 **Waste** — abandoned build server |
+| `legacy-analytics-gpu` | $1.20/hr |  **Waste** — GPU node, sustained low CPU |
+| `jenkins-build-executor-orphaned` | $0.768/hr |  **Waste** — abandoned build server |
 | `ml-training-cluster-master` | $3.06/hr | 🟢 **Protected** — periodic ML workload, not idle |
 | `dev-sandbox-db-replica` | $0.52/hr | 🟢 Healthy |
 | `prod-k8s-worker-node-01` | $0.34/hr | 🟢 Healthy |
@@ -608,7 +608,7 @@ The spread from $0.04 to $3.06/hr is deliberate — it makes the cost-weighted r
 
 | ID | Severity | Finding |
 | :--- | :--- | :--- |
-| `FIND-101` | 🔴 CRITICAL | S3 bucket publicly readable |
+| `FIND-101` |  CRITICAL | S3 bucket publicly readable |
 | `FIND-102` | 🟠 HIGH | SSH port 22 open to `0.0.0.0/0` |
 | `FIND-103` | 🟡 MEDIUM | Outdated OS kernel with known CVE |
 | *(+5 more)* | | Hardcoded keys, unencrypted volumes, IAM misconfigurations |
@@ -652,7 +652,7 @@ NitroCloud provides serverless hosting with a permanent HTTPS URL that survives 
 
 Every push to `main` now triggers a live build.
 
-&gt; ⚠️ **Critical:** copy every variable from your local `.env` into **NitroCloud → Settings → Environment Variables**. Your `.env` is gitignored and will not be deployed. Without this, GitHub and Slack integrations return `skipped` in production.
+&gt; ️ **Critical:** copy every variable from your local `.env` into **NitroCloud → Settings → Environment Variables**. Your `.env` is gitignored and will not be deployed. Without this, GitHub and Slack integrations return `skipped` in production.
 
 ### Verify
 

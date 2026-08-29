@@ -5,16 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merkle Tree Implementation - Aakash G S</title>
-    <!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9233292105405086" crossorigin="anonymous"></script>
+    {adsense_code}
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
         .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        /* Markdown styling inside Tailwind prose */
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 { color: #e2e8f0; margin-top: 1.5em; margin-bottom: 0.5em; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 0.3em; }
+        .markdown-body h1 { font-size: 2.25rem; border-bottom: 2px solid #38bdf8; padding-bottom: 0.5rem; }
+        .markdown-body h2 { font-size: 1.75rem; }
+        .markdown-body h3 { font-size: 1.25rem; }
+        .markdown-body p { margin-bottom: 1em; line-height: 1.7; font-size: 1.1rem; }
+        .markdown-body ul { list-style-type: disc; padding-left: 2em; margin-bottom: 1em; font-size: 1.1rem; }
+        .markdown-body ol { list-style-type: decimal; padding-left: 2em; margin-bottom: 1em; font-size: 1.1rem; }
+        .markdown-body a { color: #38bdf8; text-decoration: underline; }
+        .markdown-body code { background-color: #1e293b; padding: 0.2em 0.4em; border-radius: 3px; font-family: monospace; color: #fb7185; }
+        .markdown-body pre { background-color: #1e293b; padding: 1.5em; border-radius: 8px; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #334155; }
+        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; font-size: 0.9rem; }
+        .markdown-body blockquote { border-left: 4px solid #38bdf8; padding-left: 1.5em; color: #94a3b8; font-style: italic; background-color: rgba(56, 189, 248, 0.05); padding: 1em; border-radius: 4px; }
+        .markdown-body table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; }
+        .markdown-body th, .markdown-body td { border: 1px solid #334155; padding: 0.75em; text-align: left; }
+        .markdown-body th { background-color: #1e293b; color: #38bdf8; font-weight: 600; }
+        .markdown-body tr:nth-child(even) { background-color: rgba(255,255,255,0.02); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center p-6">
-    <nav class="w-full max-w-4xl mb-8 flex justify-between items-center">
+    <nav class="w-full max-w-5xl mb-8 flex justify-between items-center">
         <a href="index.html" class="text-blue-400 hover:text-blue-300 flex items-center gap-2 transition-colors font-semibold">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Back to Projects
@@ -22,42 +40,65 @@
         <div class="text-slate-400 font-medium">Aakash G S</div>
     </nav>
     
-    <main class="w-full max-w-4xl glass-panel rounded-2xl p-8 shadow-2xl mb-12">
-        <header class="mb-8 border-b border-slate-700 pb-6">
-            <h1 class="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-4">Merkle Tree Implementation</h1>
-            <p class="text-xl text-slate-300">Data Structures and Algorithms project demonstrating a custom Merkle Tree for data verification.</p>
+    <main class="w-full max-w-5xl glass-panel rounded-2xl p-8 shadow-2xl mb-12">
+        <header class="mb-10 border-b border-slate-700 pb-6 flex justify-between items-end">
+            <div>
+                <p class="text-emerald-400 font-medium mb-2 tracking-widest text-sm uppercase">Official Documentation</p>
+                <h1 class="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400 mb-0">Merkle Tree Implementation</h1>
+            </div>
+            <a href="https://github.com/AakashGs10/COLLEGE-PROJECTS/tree/main/{id}" target="_blank" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white rounded-lg font-medium transition-all shadow hover:shadow-blue-500/20 flex items-center gap-2">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                GitHub
+            </a>
         </header>
         
-        <article class="prose prose-invert max-w-none text-slate-300 leading-relaxed text-lg">
-            
-            <h3 class="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">1. Executive Summary</h3>
-            <p class="mb-4">This Data Structures and Algorithms (DSA) project is a ground-up implementation of a Merkle Tree (Hash Tree). It demonstrates how large datasets can be securely and efficiently verified without transmitting the entire dataset.</p>
-            
-            <h3 class="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">2. The Problem Statement</h3>
-            <p class="mb-4">In distributed systems (like Git, IPFS, or Blockchains), nodes need to verify that a specific piece of data belongs to a larger dataset without downloading everything. A standard linear hash chain requires O(N) time for verification. A tree structure was needed to bring this down to O(log N).</p>
-            
-            <h3 class="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">3. Technical Architecture</h3>
-            <p class="mb-4">Written in modern C++, the project manages memory dynamically using smart pointers. The tree is constructed bottom-up: raw data blocks are hashed using the SHA-256 algorithm to form the leaf nodes. Pairs of adjacent nodes are concatenated and hashed to form the parent nodes, continuing recursively until a single Root Hash is formed. The project includes a comprehensive API for generating "Merkle Proofs".</p>
-            
-            <h3 class="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">4. Key Features & Implementation</h3>
-            <ul class="list-disc pl-6 mb-4 space-y-2">
-                <li><strong class="text-blue-400">Efficient Proof Generation:</strong> The algorithm generates cryptographic proofs in O(log N) time, extracting only the sibling hashes needed to reconstruct the root.</li>
-                <li><strong class="text-blue-400">Dynamic Updates:</strong> If a single data block changes, the tree intelligently recalculates only the affected branch up to the root, rather than rebuilding the entire tree.</li>
-                <li><strong class="text-blue-400">Memory Optimization:</strong> Strictly typed and utilizes move semantics and reference passing to minimize memory overhead during deep tree traversals.</li>
-            </ul>
-            
-            <h3 class="text-xl font-bold text-white mt-6 mb-3 border-b border-slate-700 pb-2">5. Conclusion</h3>
-            <p class="mb-4">This implementation underscores a strong grasp of complex data structures, cryptography, and systems-level memory management in C++.</p>
+        <textarea id="markdown-source" style="display:none;">
+
+## Project Directory Breakdown
+
+###  1. SignalKey: RSSI-Based Secret Key Generation
+* **Directory:** `_SignalKey_IoT_Security/`
+* **Core Stack:** Contiki OS, Cooja Simulator, C, Python
+* Engineered a decentralized physical-layer security protocol utilizing wireless RSSI values to dynamically generate cryptographic keys for resource-constrained nodes.
+* Simulated multi-node adversarial topologies within Cooja to analyze key extraction entropy and minimize Bit Error Rates (BER) at the MAC/PHY layer.
+
+###  2. Fake Job Posting Detection using Explainable AI
+* **Directory:** `2_Fake_Job_Posting_Detection/`
+* **Core Stack:** Python, XGBoost, LightGBM, SHAP, Streamlit
+* Built an end-to-end classification framework using TF-IDF NLP features to accurately detect fraudulent web data and job postings.
+* Optimized system performance via a stacking ensemble architecture and integrated SHAP for local/global prediction interpretability.
+
+###  3. Merkle Tree-Based Transaction Storage System
+* **Directory:** `3_Merkle_Tree_Ledger/`
+* **Core Stack:** C++, Cryptographic Hashing (SHA-256), Data Structures
+* Programmed a high-performance hierarchical Merkle Tree structure from scratch to cryptographically secure transactional ledger integrity.
+* Enabled real-time zero-trust tamper detection alongside efficient $O(\log N)$ structural proof validation profiles.
+
+###  4. Pharma Verichain Model: Supply Chain Compliance
+* **Directory:** `4_Pharma_Verichain/`
+* **Core Stack:** Python, Scikit-Learn, Pandas, ML Classifiers
+* Developed a machine learning pipeline to classify and validate FDA product data to isolate anomalies and fraudulent patterns within supply chains.
+* Applied structured feature engineering and cross-validation techniques to maximize baseline classification boundaries.
+
+---
+
+## Technical Competency Matrix
+
+* **Networking &amp; Security:** TCP/IP Stack, Network Security, Cryptographic Key Generation, Wireless Sensor Networks (WSN), Contiki OS, Cooja Simulator.
+* **Core Computing &amp; Languages:** Data Structures &amp; Algorithms (DSA), OOP, C, Python, C++, SQL, Linux, Git.
+</textarea>
         
+        <article id="content" class="markdown-body text-slate-300 w-full max-w-full">
         </article>
         
-        <div class="mt-12 pt-8 border-t border-slate-700 flex flex-col sm:flex-row items-center justify-between">
-            <p class="text-slate-400 mb-4 sm:mb-0">Want to see the code?</p>
-            <a href="https://github.com/AakashGs10/COLLEGE-PROJECTS/tree/main/03_Merkle_Tree_DSA" target="_blank" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg font-bold transition-all shadow-lg hover:shadow-blue-500/25 flex items-center gap-2">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-                View Repository
-            </a>
-        </div>
+        <script>
+            const rawMarkdown = document.getElementById('markdown-source').value;
+            // Decode HTML entities safely in case any existed in code blocks
+            const txt = document.createElement("textarea");
+            txt.innerHTML = rawMarkdown;
+            document.getElementById('content').innerHTML = marked.parse(txt.value);
+        </script>
+        
     </main>
     <footer class="mt-auto pb-6 text-slate-500 text-sm">
         &copy; 2026 Aakash G S. All rights reserved.

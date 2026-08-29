@@ -4,67 +4,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aakash G S - Portfolio & Blog</title>
-    <!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+    <title>Aakash G S - Interactive Portfolio</title>
+    {adsense_code}
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 2rem; color: #333; }
-        h1, h2, h3 { color: #2c3e50; }
-        a { color: #3498db; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .project-card { border: 1px solid #ecf0f1; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; transition: box-shadow 0.3s; }
-        .project-card:hover { box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .project-title { margin-top: 0; }
+        body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .glass-card { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
+        .glass-card:hover { transform: translateY(-5px); background: rgba(30, 41, 59, 0.8); border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 10px 30px -10px rgba(2, 132, 199, 0.5); }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Aakash G S</h1>
-        <p>Software Engineer | Open Source Contributor | Tech Enthusiast</p>
-        <p>Welcome to my portfolio blog. Here I document my projects, experiments, and learnings.</p>
+<body class="min-h-screen flex flex-col items-center p-6">
+    <header class="w-full max-w-6xl mt-10 mb-16 text-center">
+        <h1 class="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 mb-4 tracking-tight">Aakash G S</h1>
+        <p class="text-xl text-slate-400 font-light max-w-2xl mx-auto">Software Engineer &middot; Architect &middot; Tech Enthusiast</p>
+        <p class="mt-4 text-slate-500">Explore my technical projects, their architectures, and open-source contributions.</p>
     </header>
-    <main>
-        <h2>My Projects</h2>
-        
-    <div class="project-card">
-        <h3 class="project-title"><a href="cloudguard-ai.html">cloudguard-ai</a></h3>
-        <p>CloudGuard AI is an advanced AI-powered cloud security platform...</p>
-        <a href="cloudguard-ai.html">Read more →</a>
-    </div>
     
-    <div class="project-card">
-        <h3 class="project-title"><a href="college-projects.html">COLLEGE-PROJECTS</a></h3>
-        <p>A collection of various college projects covering different tech stacks and algorithms.</p>
-        <a href="college-projects.html">Read more →</a>
-    </div>
+    <main class="w-full max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+    <a href="cloudguard-ai.html" class="glass-card rounded-xl p-6 flex flex-col h-full cursor-pointer block group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <h3 class="text-2xl font-semibold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">CloudGuard AI</h3>
+        <p class="text-slate-400 flex-grow text-sm leading-relaxed">An advanced AI-powered cloud security platform designed to detect and mitigate threats in cloud infrastructure.</p>
+        <div class="mt-6 flex items-center text-emerald-400 text-sm font-medium">
+            Read Detailed Review <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+    </a>
     
-    <div class="project-card">
-        <h3 class="project-title"><a href="cryptoledger.html">CryptoLedger</a></h3>
-        <p>A secure, decentralized cryptocurrency ledger implementation.</p>
-        <a href="cryptoledger.html">Read more →</a>
-    </div>
+    <a href="cryptoledger.html" class="glass-card rounded-xl p-6 flex flex-col h-full cursor-pointer block group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <h3 class="text-2xl font-semibold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">CryptoLedger</h3>
+        <p class="text-slate-400 flex-grow text-sm leading-relaxed">A secure, decentralized cryptocurrency ledger implementation showcasing core blockchain concepts.</p>
+        <div class="mt-6 flex items-center text-emerald-400 text-sm font-medium">
+            Read Detailed Review <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+    </a>
     
-    <div class="project-card">
-        <h3 class="project-title"><a href="ebpf-firewall.html">ebpf-firewall</a></h3>
-        <p>High-performance eBPF-based firewall with threat intelligence integration. It drops malicious traffic at the NIC level using XDP.</p>
-        <a href="ebpf-firewall.html">Read more →</a>
-    </div>
+    <a href="ebpf-firewall.html" class="glass-card rounded-xl p-6 flex flex-col h-full cursor-pointer block group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <h3 class="text-2xl font-semibold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">eBPF XDP Firewall</h3>
+        <p class="text-slate-400 flex-grow text-sm leading-relaxed">High-performance, kernel-level network firewall built with eBPF/XDP for real-time packet inspection.</p>
+        <div class="mt-6 flex items-center text-emerald-400 text-sm font-medium">
+            Read Detailed Review <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+    </a>
     
-    <div class="project-card">
-        <h3 class="project-title"><a href="morse-code-translation.html">Morse_code_translation</a></h3>
-        <p>A utility tool for encoding and decoding Morse code.</p>
-        <a href="morse-code-translation.html">Read more →</a>
-    </div>
+    <a href="morse-code-translation.html" class="glass-card rounded-xl p-6 flex flex-col h-full cursor-pointer block group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <h3 class="text-2xl font-semibold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">Morse Code Translator</h3>
+        <p class="text-slate-400 flex-grow text-sm leading-relaxed">A utility tool for encoding and decoding Morse code, providing instant translation.</p>
+        <div class="mt-6 flex items-center text-emerald-400 text-sm font-medium">
+            Read Detailed Review <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+    </a>
     
-    <div class="project-card">
-        <h3 class="project-title"><a href="pose-detection.html">POSE-DETECTION</a></h3>
-        <p>Computer vision project utilizing machine learning models to detect human poses in real-time.</p>
-        <a href="pose-detection.html">Read more →</a>
-    </div>
+    <a href="pose-detection.html" class="glass-card rounded-xl p-6 flex flex-col h-full cursor-pointer block group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <h3 class="text-2xl font-semibold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">Pose Detection System</h3>
+        <p class="text-slate-400 flex-grow text-sm leading-relaxed">Computer vision project utilizing machine learning models to detect human poses in real-time.</p>
+        <div class="mt-6 flex items-center text-emerald-400 text-sm font-medium">
+            Read Detailed Review <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+    </a>
     
+    <a href="01-signalkey-iot-security.html" class="glass-card rounded-xl p-6 flex flex-col h-full cursor-pointer block group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <h3 class="text-2xl font-semibold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">SignalKey IoT Security</h3>
+        <p class="text-slate-400 flex-grow text-sm leading-relaxed">A security framework for IoT devices focusing on signal-based authentication.</p>
+        <div class="mt-6 flex items-center text-emerald-400 text-sm font-medium">
+            Read Detailed Review <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+    </a>
+    
+    <a href="02-fake-job-posting-detection.html" class="glass-card rounded-xl p-6 flex flex-col h-full cursor-pointer block group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <h3 class="text-2xl font-semibold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">Fake Job Posting Detection</h3>
+        <p class="text-slate-400 flex-grow text-sm leading-relaxed">An explainable machine learning framework for detecting fraudulent job postings.</p>
+        <div class="mt-6 flex items-center text-emerald-400 text-sm font-medium">
+            Read Detailed Review <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+    </a>
+    
+    <a href="03-merkle-tree-dsa.html" class="glass-card rounded-xl p-6 flex flex-col h-full cursor-pointer block group relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <h3 class="text-2xl font-semibold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">Merkle Tree Implementation</h3>
+        <p class="text-slate-400 flex-grow text-sm leading-relaxed">Data Structures and Algorithms project demonstrating a custom Merkle Tree for data verification.</p>
+        <div class="mt-6 flex items-center text-emerald-400 text-sm font-medium">
+            Read Detailed Review <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+    </a>
+    
+        </div>
     </main>
-    <footer>
-        <p style="text-align: center; margin-top: 3rem; color: #7f8c8d;">&copy; 2026 Aakash G S. All rights reserved.</p>
+    
+    <footer class="mt-20 mb-8 text-slate-500 text-sm text-center">
+        &copy; 2026 Aakash G S. All rights reserved.<br>
+        <span class="text-slate-600">Built with modern web technologies.</span>
     </footer>
 </body>
 </html>

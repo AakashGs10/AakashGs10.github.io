@@ -14,46 +14,65 @@
         .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         
         /* Modern Blog Typography */
-        .markdown-body h1 { color: #f8fafc; font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; letter-spacing: -0.025em; }
-        .markdown-body h2 { color: #38bdf8; font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; }
-        .markdown-body p { color: #cbd5e1; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.5rem; }
-        .markdown-body ul { color: #cbd5e1; font-size: 1.125rem; list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8; }
-        .markdown-body li { margin-bottom: 0.5rem; }
+        .markdown-body h1 { color: #f8fafc; font-size: 2.75rem; font-weight: 800; margin-bottom: 2rem; line-height: 1.2; letter-spacing: -0.025em; border-bottom: 2px solid rgba(56, 189, 248, 0.3); padding-bottom: 1rem; }
+        .markdown-body h2 { color: #38bdf8; font-size: 1.75rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.25rem; letter-spacing: -0.015em; }
+        .markdown-body h3 { color: #a7f3d0; font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+        .markdown-body p { color: #cbd5e1; font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.75rem; }
+        .markdown-body ul { color: #cbd5e1; font-size: 1.15rem; list-style-type: disc; padding-left: 1.75rem; margin-bottom: 1.75rem; line-height: 1.8; }
+        .markdown-body li { margin-bottom: 0.75rem; }
         .markdown-body strong { color: #f8fafc; font-weight: 600; }
         
         .blog-header { position: relative; padding-bottom: 2rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(56, 189, 248, 0.2); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center p-6">
-    <nav class="w-full max-w-3xl mb-12 flex justify-between items-center">
+    <nav class="w-full max-w-4xl mb-12 flex justify-between items-center">
         <a href="index.html" class="text-slate-400 hover:text-white flex items-center gap-2 transition-colors font-medium">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Back to Home
         </a>
-        <div class="text-emerald-400 font-semibold tracking-wide uppercase text-sm">Tech Blog</div>
+        <div class="text-emerald-400 font-semibold tracking-wide uppercase text-sm">In-Depth Tech Blog</div>
     </nav>
     
-    <main class="w-full max-w-3xl glass-panel rounded-2xl p-8 sm:p-12 shadow-2xl mb-12">
+    <main class="w-full max-w-4xl glass-panel rounded-2xl p-8 sm:p-14 shadow-2xl mb-12">
         
-        <textarea id="markdown-source" style="display:none;"># Building CloudGuard AI: Securing the Cloud with Machine Learning
+        <textarea id="markdown-source" style="display:none;"># Building CloudGuard AI: Securing the Cloud with Deep Learning
 
-Welcome to my deep dive into **CloudGuard AI**, a project I built to tackle one of the most pressing issues in modern infrastructure: cloud security.
+Welcome to my deep dive into **CloudGuard AI**, a project I built to tackle one of the most pressing, complex issues in modern infrastructure: cloud security at scale.
 
-As organizations move their entire operations to the cloud, the attack surface has expanded exponentially. Traditional rule-based firewalls and security groups simply aren't enough to catch sophisticated, slow-moving attacks. That's where CloudGuard AI steps in.
+As organizations move their entire operations to the cloud, the attack surface has expanded exponentially. Traditional rule-based firewalls and security groups simply aren't enough to catch sophisticated, slow-moving attacks or zero-day exploits. Attackers are increasingly using compromised valid credentials or exploiting minute misconfigurations, making their lateral movement look like legitimate traffic. That's exactly where CloudGuard AI steps in.
 
-## The Vision
-I wanted to build a security platform that doesn't just rely on static rules, but actually *learns* the baseline behavior of a cloud environment. By understanding what "normal" looks like, the system can instantly flag anomalies—whether it's an unusual spike in database queries, or an IAM user accessing resources from a new geographical location.
+## The Vision and The Problem
+I wanted to build a security platform that doesn't just rely on static, manually updated rules. Instead, I envisioned a system that actually *learns* the baseline behavior of a cloud ecosystem. By understanding what "normal" looks like—down to the exact API calls a specific IAM role makes at 2:00 AM on a Tuesday—the system can instantly flag anomalies. 
 
-## How It Works Under the Hood
-The architecture is heavily reliant on real-time data streaming and deep learning:
-* **Ingestion:** The system continuously ingests AWS CloudTrail logs and VPC Flow Logs.
-* **Processing:** I utilized **Apache Kafka** to handle the high-throughput data streams, ensuring no packet or log is dropped during traffic spikes.
-* **AI Engine:** The core of the platform is an unsupervised machine learning model (using Autoencoders) built with **PyTorch**. Because it's unsupervised, it doesn't need to be trained on specific malware signatures; it simply flags anything that deviates from the learned baseline.
+Whether it's an unusual spike in database read queries, an IAM user accessing S3 buckets from a new geographical location, or a sudden burst of outbound traffic from a supposedly private EC2 instance, CloudGuard AI is designed to catch it.
 
-## Real-World Impact
-During testing, CloudGuard AI was able to detect simulated brute-force attacks and unauthorized data exfiltration attempts significantly faster than traditional CloudWatch alarms. More importantly, by integrating it directly with AWS Lambda, the system can automatically revoke compromised IAM credentials the second an anomaly crosses the confidence threshold.
+## Deep Dive into the Architecture
+Building a system capable of real-time threat detection required a heavily distributed, highly scalable microservices architecture. Here is a breakdown of the core components:
 
-Building this taught me a massive amount about distributed systems and the practical applications of AI in cybersecurity. Feel free to check out the code below!</textarea>
+### 1. High-Throughput Ingestion (Apache Kafka)
+The system continuously ingests massive streams of telemetry data. This includes:
+* **AWS CloudTrail Logs:** Every API call made within the AWS environment.
+* **VPC Flow Logs:** Metadata about every single network packet entering and leaving the virtual private cloud.
+* **GuardDuty Findings:** Integrating existing AWS security alerts into a centralized pipeline.
+
+To handle this massive influx of data without dropping logs during traffic spikes (which could be the exact moment an attack is happening), I utilized **Apache Kafka**. Kafka acts as a high-throughput, fault-tolerant buffer, ensuring that the AI processing engine receives every single event in chronological order.
+
+### 2. The Unsupervised AI Engine (PyTorch)
+The core of the platform is an unsupervised machine learning model built with **PyTorch**. I specifically chose an unsupervised approach (utilizing Autoencoders and Recurrent Neural Networks) because it doesn't need to be trained on specific malware signatures. 
+
+Instead, the Autoencoder is trained on millions of *normal* log events. It learns to compress and reconstruct this normal data. When an abnormal event occurs (like an attacker trying to exfiltrate data), the Autoencoder struggles to reconstruct it, resulting in a high "reconstruction error." If this error crosses a dynamic threshold, an alert is triggered.
+
+### 3. Automated Remediation
+Detection is only half the battle; response is where the real value lies. I integrated CloudGuard AI directly with AWS Lambda. When a high-confidence threat is detected, Lambda functions are instantly triggered to:
+* Isolate compromised EC2 instances by swapping their Security Groups.
+* Revoke suspicious IAM credentials and kill active user sessions.
+* Update Web Application Firewall (WAF) rules to block malicious IPs globally.
+
+## Real-World Impact and Benchmarks
+During simulated red-team testing, CloudGuard AI was able to detect simulated brute-force attacks, lateral movement, and unauthorized data exfiltration attempts significantly faster than traditional CloudWatch alarms. Because it relies on behavioral baselines, the false-positive rate dropped dramatically over the first two weeks of the learning phase.
+
+Building CloudGuard AI taught me a massive amount about distributed systems, big data pipelines, and the highly practical, necessary applications of AI in cybersecurity. Feel free to check out the underlying code and architectural diagrams in the repository below!</textarea>
         
         <article id="content" class="markdown-body">
             <!-- Rendered markdown goes here -->
@@ -66,19 +85,19 @@ Building this taught me a massive amount about distributed systems and the pract
             document.getElementById('content').innerHTML = marked.parse(txt.value);
         </script>
         
-        <div class="mt-16 pt-8 border-t border-slate-700/50 flex flex-col sm:flex-row items-center justify-between bg-slate-800/30 p-6 rounded-xl">
+        <div class="mt-20 pt-10 border-t border-slate-700/50 flex flex-col sm:flex-row items-center justify-between bg-slate-800/40 p-8 rounded-xl shadow-inner">
             <div>
-                <h4 class="text-white font-semibold mb-1">Interested in the code?</h4>
-                <p class="text-slate-400 text-sm mb-4 sm:mb-0">Check out the full repository and implementation details.</p>
+                <h4 class="text-white text-xl font-bold mb-2">Want to dive deeper into the code?</h4>
+                <p class="text-slate-400 text-base mb-6 sm:mb-0 max-w-lg">All of the algorithms, architectures, and full source code discussed in this article are completely open-source and available on my GitHub.</p>
             </div>
-            <a href="https://github.com/AakashGs10/cloudguard-ai" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-all shadow-lg hover:shadow-blue-500/25 flex items-center gap-2 whitespace-nowrap">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-                View on GitHub
+            <a href="https://github.com/AakashGs10/cloudguard-ai" target="_blank" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold transition-all shadow-lg hover:shadow-blue-500/25 flex items-center gap-3 whitespace-nowrap text-lg">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                View Repository
             </a>
         </div>
     </main>
     <footer class="mt-auto pb-8 text-slate-500 text-sm">
-        &copy; 2026 Aakash G S. All rights reserved.
+        &copy; 2026 Aakash G S. All rights reserved. Built with modern web technologies.
     </footer>
 </body>
 </html>

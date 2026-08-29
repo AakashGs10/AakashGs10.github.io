@@ -14,48 +14,58 @@
         .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         
         /* Modern Blog Typography */
-        .markdown-body h1 { color: #f8fafc; font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; letter-spacing: -0.025em; }
-        .markdown-body h2 { color: #38bdf8; font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; }
-        .markdown-body p { color: #cbd5e1; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.5rem; }
-        .markdown-body ul { color: #cbd5e1; font-size: 1.125rem; list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8; }
-        .markdown-body li { margin-bottom: 0.5rem; }
+        .markdown-body h1 { color: #f8fafc; font-size: 2.75rem; font-weight: 800; margin-bottom: 2rem; line-height: 1.2; letter-spacing: -0.025em; border-bottom: 2px solid rgba(56, 189, 248, 0.3); padding-bottom: 1rem; }
+        .markdown-body h2 { color: #38bdf8; font-size: 1.75rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.25rem; letter-spacing: -0.015em; }
+        .markdown-body h3 { color: #a7f3d0; font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+        .markdown-body p { color: #cbd5e1; font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.75rem; }
+        .markdown-body ul { color: #cbd5e1; font-size: 1.15rem; list-style-type: disc; padding-left: 1.75rem; margin-bottom: 1.75rem; line-height: 1.8; }
+        .markdown-body li { margin-bottom: 0.75rem; }
         .markdown-body strong { color: #f8fafc; font-weight: 600; }
         
         .blog-header { position: relative; padding-bottom: 2rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(56, 189, 248, 0.2); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center p-6">
-    <nav class="w-full max-w-3xl mb-12 flex justify-between items-center">
+    <nav class="w-full max-w-4xl mb-12 flex justify-between items-center">
         <a href="index.html" class="text-slate-400 hover:text-white flex items-center gap-2 transition-colors font-medium">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Back to Home
         </a>
-        <div class="text-emerald-400 font-semibold tracking-wide uppercase text-sm">Tech Blog</div>
+        <div class="text-emerald-400 font-semibold tracking-wide uppercase text-sm">In-Depth Tech Blog</div>
     </nav>
     
-    <main class="w-full max-w-3xl glass-panel rounded-2xl p-8 sm:p-12 shadow-2xl mb-12">
+    <main class="w-full max-w-4xl glass-panel rounded-2xl p-8 sm:p-14 shadow-2xl mb-12">
         
         <textarea id="markdown-source" style="display:none;"># Unmasking Scammers: Fake Job Posting Detection with Explainable AI
 
-Finding a job is stressful enough without having to worry about scammers stealing your personal identity. While browsing job boards, I realized how difficult it can be to distinguish a legitimate remote job from a highly sophisticated phishing scam. 
+Finding a job is stressful enough in today's highly competitive market without having to worry about scammers trying to steal your personal identity or financial information. While browsing various remote job boards, I realized just how difficult it can be to distinguish a legitimate employment opportunity from a highly sophisticated phishing scam. Scammers have become incredibly adept at mimicking corporate language and formatting.
 
-To solve this, I built an **Explainable Machine Learning Framework** designed to analyze job postings and detect fraud.
+To combat this growing issue, I built an **Explainable Machine Learning Framework** designed to automatically analyze job postings, detect fraudulent language, and protect applicants.
 
-## The Data and the Models
-I utilized a comprehensive dataset of thousands of job postings, extracting features like the presence of a company logo, the structure of the description, the requested salary range, and specific keyword frequencies.
+## The Data Engineering Process
+Machine learning is only as good as the data it trains on. I utilized a comprehensive, imbalanced dataset containing thousands of real and fake job postings. 
 
-I trained several models to find the most accurate solution:
-1. Logistic Regression (as a baseline)
-2. Random Forest
-3. **XGBoost** (which yielded the highest performance)
+The first major hurdle was feature engineering. I extracted both structured and unstructured data:
+* **Categorical Features:** Presence of a company logo, whether the company profile is filled out, industry type, and required education.
+* **Text Processing (NLP):** I used Natural Language Processing (TF-IDF vectorization) to analyze the actual text of the job description, the requirements, and the benefits sections. Fraudulent posts often use specific manipulative phrasing or exhibit unnatural keyword stuffing.
 
-## The Importance of "Explainability" (SHAP)
-A major problem with AI is the "black box" effect. If a model flags a job as fake, human moderators need to know *why*. 
+## Model Training and Selection
+I trained and evaluated several models to find the most accurate solution:
+1. **Logistic Regression:** Used as a baseline for text classification.
+2. **Random Forest:** To handle the complex non-linear relationships between the categorical features.
+3. **XGBoost (Extreme Gradient Boosting):** This model ultimately yielded the highest performance, easily handling the highly imbalanced nature of the dataset (where real jobs vastly outnumber fake ones).
 
-To solve this, I integrated **SHAP (SHapley Additive exPlanations)**. Instead of just outputting "Fake: 95%", the dashboard visually breaks down exactly which features influenced the decision. For example, it might highlight that the absence of a company logo and the phrase "wire transfer" heavily contributed to the fraud score.
+## The Critical Importance of "Explainability" (SHAP)
+A major problem with modern AI is the "black box" effect. If an AI model flags a job as fake, human moderators or applicants need to know *why*. You cannot simply ban a company's account based on a raw percentage score without justification.
 
-## The Frontend
-I wrapped the entire system in an interactive **Streamlit** web application. Users can paste a job description URL into the dashboard and instantly receive a fraud probability score along with a visual SHAP breakdown. It's a highly practical tool with real-world applications in the HR tech space.</textarea>
+To solve this, I deeply integrated **SHAP (SHapley Additive exPlanations)**. SHAP values use game theory to explain the output of any machine learning model. Instead of just outputting "Fraud Probability: 95%", the dashboard visually breaks down exactly which features influenced the decision. 
+
+For example, the SHAP visualization might highlight that the absence of a company logo (+20% fraud risk), the phrase "wire transfer required" (+40% fraud risk), and a lack of required education (+10% fraud risk) pushed the post into the danger zone.
+
+## The Interactive Frontend
+I wrapped the entire AI backend into an interactive **Streamlit** web application. Users can paste a job description URL or raw text into the dashboard and instantly receive a fraud probability score along with the visual SHAP breakdown. 
+
+Building this taught me that high accuracy isn't enough in the real world; users need to trust and understand the AI's reasoning. This framework provides a highly practical tool with real-world applications in the HR tech and cybersecurity space.</textarea>
         
         <article id="content" class="markdown-body">
             <!-- Rendered markdown goes here -->
@@ -68,19 +78,19 @@ I wrapped the entire system in an interactive **Streamlit** web application. Use
             document.getElementById('content').innerHTML = marked.parse(txt.value);
         </script>
         
-        <div class="mt-16 pt-8 border-t border-slate-700/50 flex flex-col sm:flex-row items-center justify-between bg-slate-800/30 p-6 rounded-xl">
+        <div class="mt-20 pt-10 border-t border-slate-700/50 flex flex-col sm:flex-row items-center justify-between bg-slate-800/40 p-8 rounded-xl shadow-inner">
             <div>
-                <h4 class="text-white font-semibold mb-1">Interested in the code?</h4>
-                <p class="text-slate-400 text-sm mb-4 sm:mb-0">Check out the full repository and implementation details.</p>
+                <h4 class="text-white text-xl font-bold mb-2">Want to dive deeper into the code?</h4>
+                <p class="text-slate-400 text-base mb-6 sm:mb-0 max-w-lg">All of the algorithms, architectures, and full source code discussed in this article are completely open-source and available on my GitHub.</p>
             </div>
-            <a href="https://github.com/AakashGs10/COLLEGE-PROJECTS/tree/main/02_Fake_Job_Posting_Detection" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-all shadow-lg hover:shadow-blue-500/25 flex items-center gap-2 whitespace-nowrap">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-                View on GitHub
+            <a href="https://github.com/AakashGs10/COLLEGE-PROJECTS/tree/main/02_Fake_Job_Posting_Detection" target="_blank" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold transition-all shadow-lg hover:shadow-blue-500/25 flex items-center gap-3 whitespace-nowrap text-lg">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                View Repository
             </a>
         </div>
     </main>
     <footer class="mt-auto pb-8 text-slate-500 text-sm">
-        &copy; 2026 Aakash G S. All rights reserved.
+        &copy; 2026 Aakash G S. All rights reserved. Built with modern web technologies.
     </footer>
 </body>
 </html>

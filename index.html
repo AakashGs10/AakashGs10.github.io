@@ -3,54 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aakash G S - Portfolio and Tech Blog. Explore in-depth engineering architectures, AI implementations, and cloud security projects.">
-    <meta name="keywords" content="Aakash G S, portfolio, tech blog, software engineering, AI, cloud security, eBPF, IoT">
-    <link rel="canonical" href="https://aakashgs10.github.io/">
-    <meta property="og:title" content="Aakash G S - Tech Blog">
-    <meta property="og:description" content="Aakash G S - Portfolio and Tech Blog. Explore in-depth engineering architectures, AI implementations, and cloud security projects.">
-    <meta property="og:url" content="https://aakashgs10.github.io/">
-    <meta property="og:type" content="article">
-    <title>Aakash G S - Portfolio & Tech Blog</title>
-            <meta name="author" content="Aakash G S">
-    <meta name="google-site-verification" content="HwuQO2EJs_VPoODx_pEM2-IdqqTQlBE2vPyzgHcYl_8" />
-        
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9233292105405086" crossorigin="anonymous"></script>
-
+    <title>Aakash G S - Software Engineer & Architect</title>
+    <meta name="description" content="Aakash G S - Software Engineer, Architect, and Tech Enthusiast. Exploring cloud security, AI, systems programming, and more.">
+    <meta name="keywords" content="Aakash G S, Software Engineer, Architect, Tech, AI, Cloud Security, eBPF, IoT">
+    <link rel="canonical" href="https://www.aakashgs.com/">
+    <meta property="og:title" content="Aakash G S - Portfolio and Blog">
+    <meta property="og:description" content="Exploring cloud security, AI, and systems programming.">
+    <meta property="og:type" content="website">
+    <meta name="google-site-verification" content="HwuQO2EJs_VPoODx_pEM2-IdqqTQlBE2vPyzgHcYl_8">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9233292105405086" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
-        .glass-card { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
-        .glass-card:hover { transform: translateY(-5px); background: rgba(30, 41, 59, 0.8); border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 10px 30px -10px rgba(2, 132, 199, 0.5); }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .glass-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); border-color: rgba(52, 211, 153, 0.5); }
+        .article-card:hover { border-color: rgba(168, 85, 247, 0.5); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center p-6">
-    <header class="w-full max-w-6xl mt-10 mb-16 text-center">
-        <h1 class="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 mb-4 tracking-tight">Aakash G S</h1>
-        <p class="text-xl text-slate-400 font-light max-w-2xl mx-auto">Software Engineer &middot; Architect &middot; Tech Enthusiast</p>
-        <p class="mt-4 text-slate-500">Explore my technical projects, deep-dive articles, and open-source contributions.</p>
+<body class="antialiased">
+    <header class="py-20 text-center border-b border-slate-800">
+        <h1 class="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">Aakash G S</h1>
+        <p class="text-xl text-slate-400">Software Engineer &middot; Architect &middot; Tech Enthusiast</p>
     </header>
-    
-    <main class="w-full max-w-6xl">
-        <h2 class="text-3xl font-bold text-white mb-8 border-b-2 border-slate-700 pb-2">Featured Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {project_list}
-        </div>
-        
-        <h2 class="text-3xl font-bold text-white mb-8 border-b-2 border-slate-700 pb-2">Latest Articles</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blog_list}
-        </div>
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-slate-200 border-b border-slate-700 pb-2 inline-block">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="cloudguard-ai.html" class="glass-card rounded-xl p-6 block">
+                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">CloudGuard AI</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">An advanced AI-powered cloud security platform designed to detect and mitigate threats in cloud infrastructure.</p>
+                </a>
+                <a href="ebpf-firewall.html" class="glass-card rounded-xl p-6 block">
+                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">eBPF XDP Firewall</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">High-performance, kernel-level network firewall built with eBPF/XDP for real-time packet inspection.</p>
+                </a>
+                <a href="morse-code-translation.html" class="glass-card rounded-xl p-6 block">
+                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">Morse Code Translator</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">A utility tool for encoding and decoding Morse code, providing instant translation.</p>
+                </a>
+                <a href="pose-detection.html" class="glass-card rounded-xl p-6 block">
+                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">Pose Detection System</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">Computer vision project utilizing machine learning models to detect human poses in real-time.</p>
+                </a>
+                <a href="01-signalkey-iot-security.html" class="glass-card rounded-xl p-6 block">
+                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">SignalKey IoT Security</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">A security framework for IoT devices focusing on signal-based authentication.</p>
+                </a>
+                <a href="02-fake-job-posting-detection.html" class="glass-card rounded-xl p-6 block">
+                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">Fake Job Posting Detection</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">An explainable machine learning framework for detecting fraudulent job postings.</p>
+                </a>
+            </div>
+        </section>
+        <section>
+            <h2 class="text-3xl font-bold mb-8 text-slate-200 border-b border-slate-700 pb-2 inline-block">Latest Articles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="transformer-architecture-deep-dive.html" class="glass-card article-card rounded-xl p-6 block">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Demystifying the Transformer Architecture</h3>
+                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
+                </a>
+                <a href="cspm-aws-security.html" class="glass-card article-card rounded-xl p-6 block">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Building a Cloud Security Posture Management System</h3>
+                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
+                </a>
+                <a href="ebpf-performance-linux.html" class="glass-card article-card rounded-xl p-6 block">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">High-Performance Networking with eBPF and XDP</h3>
+                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
+                </a>
+                <a href="explainable-ai-shap.html" class="glass-card article-card rounded-xl p-6 block">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Interpreting Black-Box Models with SHAP Values</h3>
+                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
+                </a>
+                <a href="iot-physical-layer-auth.html" class="glass-card article-card rounded-xl p-6 block">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Physical Layer Authentication for IoT Devices</h3>
+                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
+                </a>
+                <a href="distributed-tracing-opentelemetry.html" class="glass-card article-card rounded-xl p-6 block">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Mastering Distributed Tracing with OpenTelemetry</h3>
+                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
+                </a>
+                <a href="zero-trust-architecture-basics.html" class="glass-card article-card rounded-xl p-6 block">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">The Fundamentals of Zero Trust Architecture</h3>
+                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
+                </a>
+                <a href="rust-for-systems-programming.html" class="glass-card article-card rounded-xl p-6 block">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Why Rust is Revolutionizing Systems Programming</h3>
+                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
+                </a>
+                <a href="kubernetes-operators-explained.html" class="glass-card article-card rounded-xl p-6 block">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Extending Kubernetes with Custom Operators</h3>
+                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
+                </a>
+                <a href="generative-adversarial-networks-gans.html" class="glass-card article-card rounded-xl p-6 block">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">The Mathematics of Generative Adversarial Networks</h3>
+                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
+                </a>
+            </div>
+        </section>
     </main>
-    
-    <footer class="mt-20 pb-8 text-slate-500 text-sm text-center w-full">
-        <div class="flex justify-center gap-6 mb-4 flex-wrap">
-            <a href="about.html" class="hover:text-emerald-400 transition-colors">About Us</a>
-            <a href="contact.html" class="hover:text-emerald-400 transition-colors">Contact Us</a>
-            <a href="privacy-policy.html" class="hover:text-emerald-400 transition-colors">Privacy Policy</a>
-            <a href="terms-of-service.html" class="hover:text-emerald-400 transition-colors">Terms of Service</a>
+    <footer class="border-t border-slate-800 mt-20 py-8 text-center text-slate-500">
+        <div class="flex justify-center space-x-6 mb-4">
+            <a href="about.html" class="hover:text-slate-300 transition-colors">About Us</a>
+            <a href="contact.html" class="hover:text-slate-300 transition-colors">Contact Us</a>
+            <a href="privacy.html" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
+            <a href="terms.html" class="hover:text-slate-300 transition-colors">Terms of Service</a>
         </div>
-        &copy; 2026 Aakash G S. All rights reserved.
+        <p>&copy; 2026 Aakash G S. All rights reserved.</p>
     </footer>
 </body>
 </html>

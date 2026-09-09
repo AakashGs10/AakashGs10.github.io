@@ -1,42 +1,166 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="An explainable AI (XAI) framework built with XGBoost and SHAP to analyze and detect fraudulent remote job postings.">
-    <meta name="keywords" content="fake job detection, XGBoost, SHAP, explainable AI, natural language processing, fraud detection">
-    <link rel="canonical" href="https://aakashgs10.github.io/02-fake-job-posting-detection.html">
-    <meta property="og:title" content="Aakash G S - Tech Blog">
-    <meta property="og:description" content="An explainable AI (XAI) framework built with XGBoost and SHAP to analyze and detect fraudulent remote job postings.">
-    <meta property="og:url" content="https://aakashgs10.github.io/02-fake-job-posting-detection.html">
-    <meta property="og:type" content="article">
-                                <title>Fake Job Posting Detection - Aakash G S</title>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9233292105405086" crossorigin="anonymous"></script>
+    <title>02 Fake Job Posting Detection</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9233292105405086" crossorigin="anonymous"></script>
     <style>
-        body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
-        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        
-        /* Modern Blog Typography */
-        .markdown-body h1 { color: #f8fafc; font-size: 2.75rem; font-weight: 800; margin-bottom: 2rem; line-height: 1.2; letter-spacing: -0.025em; border-bottom: 2px solid rgba(56, 189, 248, 0.3); padding-bottom: 1rem; }
-        .markdown-body h2 { color: #38bdf8; font-size: 1.75rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.25rem; letter-spacing: -0.015em; }
-        .markdown-body h3 { color: #a7f3d0; font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
-        .markdown-body p { color: #cbd5e1; font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.75rem; }
-        .markdown-body ul { color: #cbd5e1; font-size: 1.15rem; list-style-type: disc; padding-left: 1.75rem; margin-bottom: 1.75rem; line-height: 1.8; }
-        .markdown-body li { margin-bottom: 0.75rem; }
-        .markdown-body strong { color: #f8fafc; font-weight: 600; }
-        
-        .blog-header { position: relative; padding-bottom: 2rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(56, 189, 248, 0.2); }
-    
-        .markdown-body code { background-color: #1e293b; padding: 0.2em 0.4em; border-radius: 3px; font-family: monospace; color: #fb7185; }
-        .markdown-body pre { background-color: #1e293b; padding: 1.5em; border-radius: 8px; overflow-x: auto; margin-bottom: 1.5em; border: 1px solid #334155; }
-        .markdown-body pre code { background-color: transparent; padding: 0; color: #e2e8f0; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
-        .markdown-body blockquote { border-left: 4px solid #38bdf8; padding-left: 1.5em; color: #94a3b8; font-style: italic; background-color: rgba(56, 189, 248, 0.05); padding: 1em; border-radius: 4px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #cbd5e1;
+        }
+        .prose h2, .prose h3 {
+            color: #f8fafc;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .prose h2 { font-size: 1.875rem; }
+        .prose h3 { font-size: 1.5rem; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.75; }
+        .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .prose li { margin-bottom: 0.5rem; }
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to right, #10b981, #3b82f6);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.1s;
+        }
+        pre {
+            background-color: #1e293b;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        code {
+            font-family: monospace;
+            color: #e2e8f0;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #334155;
+            color: #f8fafc;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: background 0.2s;
+        }
+        .copy-btn:hover {
+            background: #475569;
+        }
+        .toc-item.active {
+            color: #38bdf8;
+            font-weight: 600;
+            border-left: 2px solid #38bdf8;
+            padding-left: 0.5rem;
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #3b82f6;
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center p-6">
+<body>
+    <div id="progress-bar"></div>
+    
+    <nav class="glass-nav fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-white font-bold text-xl">Aakash Blog</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Articles</a>
+                        <a href="about.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="contact.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Articles</a>
+                <a href="about.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="contact.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-10 text-center">
+            <span class="inline-block bg-blue-900 text-blue-200 text-xs px-2 py-1 rounded uppercase tracking-wide font-semibold mb-2">Project</span>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">02 Fake Job Posting Detection</h1>
+            <div class="flex items-center justify-center space-x-4 text-sm text-gray-400">
+                <span>Published: 2026-09-01</span>
+                <span>•</span>
+                <span>5 min read</span>
+            </div>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <aside class="w-full lg:w-1/4">
+                <div class="sticky top-24">
+                    <h3 class="text-lg font-semibold text-white mb-4 uppercase tracking-wider text-sm">Table of Contents</h3>
+                    <nav id="toc" class="space-y-2 text-sm text-gray-400">
+                        
+                    </nav>
+                </div>
+            </aside>
+            
+            <main class="w-full lg:w-3/4">
+                <article class="prose max-w-none" id="article-content">
+                    
     <nav class="w-full max-w-4xl mb-12 flex justify-between items-center">
         <a href="index.html" class="text-slate-400 hover:text-white flex items-center gap-2 transition-colors font-medium">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
@@ -109,6 +233,150 @@ Building this taught me that high accuracy isn't enough in the real world; users
         </div>
         &copy; 2026 Aakash G S. All rights reserved.
     </footer>
+
+                </article>
+
+                <div class="mt-12 pt-8 border-t border-slate-700">
+                    <h4 class="text-white font-semibold mb-4">Share this post</h4>
+                    <div class="flex space-x-4">
+                        <button onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(window.location.href)+'&text='+encodeURIComponent(document.title), '_blank')" class="bg-[#1DA1F2] hover:bg-[#1a91da] text-white px-4 py-2 rounded transition">Share on Twitter</button>
+                        <button onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title), '_blank')" class="bg-[#0A66C2] hover:bg-[#0958a8] text-white px-4 py-2 rounded transition">Share on LinkedIn</button>
+                    </div>
+                </div>
+
+                <div class="mt-12 bg-slate-800 rounded-lg p-6 flex flex-col sm:flex-row items-center gap-6">
+                    <div class="w-20 h-20 bg-slate-600 rounded-full flex-shrink-0 flex items-center justify-center text-2xl text-white font-bold">A</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Aakash G S</h3>
+                        <p class="text-gray-400 mb-2">Software Engineer building intelligent systems at the intersection of Security, AI, and Infrastructure.</p>
+                        <a href="https://github.com/AakashGs10" target="_blank" class="text-blue-400 hover:text-blue-300">github.com/AakashGs10</a>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex justify-between pt-8 border-t border-slate-700">
+                    <div>
+                        <a href="01-signalkey-iot-security.html" class="text-blue-400 hover:text-blue-300">&larr; Previous Article</a>
+                    </div>
+                    <div class="text-right">
+                        <a href="transformer-architecture-deep-dive.html" class="text-blue-400 hover:text-blue-300">Next Article &rarr;</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="mt-20 border-t border-slate-800 bg-slate-900 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-gray-400 mb-4 md:mb-0">
+                &copy; 2026 Aakash G S. All rights reserved.
+            </div>
+            <div class="flex space-x-6 text-sm">
+                <a href="about.html" class="text-gray-400 hover:text-white">About Us</a>
+                <a href="contact.html" class="text-gray-400 hover:text-white">Contact Us</a>
+                <a href="privacy-policy.html" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                <a href="terms-of-service.html" class="text-gray-400 hover:text-white">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+    </div>
+
+    <script>
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+
+            // Back to top button
+            const backToTop = document.getElementById('back-to-top');
+            if (winScroll > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // Copy button for code blocks
+        document.querySelectorAll('pre').forEach((block) => {
+            const button = document.createElement('button');
+            button.className = 'copy-btn';
+            button.innerText = 'Copy';
+            block.appendChild(button);
+
+            button.addEventListener('click', () => {
+                const code = block.querySelector('code');
+                const text = code ? code.innerText : block.innerText.replace('Copy', '');
+                navigator.clipboard.writeText(text).then(() => {
+                    button.innerText = 'Copied!';
+                    setTimeout(() => { button.innerText = 'Copy'; }, 2000);
+                });
+            });
+        });
+
+        // Generate IDs for headings and build TOC dynamically if empty
+        const headings = document.querySelectorAll('.prose h2, .prose h3');
+        const tocContainer = document.getElementById('toc');
+        if (headings.length > 0 && tocContainer.innerHTML.trim() === '') {
+            headings.forEach((heading, index) => {
+                if (!heading.id) {
+                    heading.id = 'heading-' + index;
+                }
+                const link = document.createElement('a');
+                link.href = '#' + heading.id;
+                link.innerText = heading.innerText;
+                link.className = 'block py-1 hover:text-white transition toc-item';
+                if (heading.tagName === 'H3') {
+                    link.className += ' ml-4';
+                }
+                tocContainer.appendChild(link);
+            });
+        }
+
+        // Intersection Observer for TOC active state
+        const tocItems = document.querySelectorAll('.toc-item');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -80% 0px',
+            threshold: 1.0
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    tocItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === '#' + entry.target.id) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        headings.forEach(heading => {
+            observer.observe(heading);
+        });
+
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc-item').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 100;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-

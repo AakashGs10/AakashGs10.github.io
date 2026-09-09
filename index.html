@@ -3,113 +3,592 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aakash G S - Software Engineer & Architect</title>
-    <meta name="description" content="Aakash G S - Software Engineer, Architect, and Tech Enthusiast. Exploring cloud security, AI, systems programming, and more.">
-    <meta name="keywords" content="Aakash G S, Software Engineer, Architect, Tech, AI, Cloud Security, eBPF, IoT">
-    <link rel="canonical" href="https://www.aakashgs.com/">
-    <meta property="og:title" content="Aakash G S - Portfolio and Blog">
-    <meta property="og:description" content="Exploring cloud security, AI, and systems programming.">
-    <meta property="og:type" content="website">
-    <meta name="google-site-verification" content="HwuQO2EJs_VPoODx_pEM2-IdqqTQlBE2vPyzgHcYl_8">
+    <meta name="description" content="Aakash G S - Software Engineer building intelligent systems at the intersection of Security, AI, and Infrastructure.">
+    <meta name="google-site-verification" content="HwuQO2EJs_VPoODx_pEM2-IdqqTQlBE2vPyzgHcYl_8" />
+    <link rel="canonical" href="https://aakashgs10.github.io/" />
+    <title>Aakash G S | Software Engineer</title>
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9233292105405086" crossorigin="anonymous"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
-        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .glass-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); border-color: rgba(52, 211, 153, 0.5); }
-        .article-card:hover { border-color: rgba(168, 85, 247, 0.5); }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        .glass {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(270deg, #38bdf8, #818cf8, #e879f9);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 5s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(30, 41, 59, 0.5);
+        }
+        
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
+        }
+
+        .filter-btn {
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .filter-btn.active {
+            background-color: #38bdf8;
+            color: #0f172a;
+            border-color: #38bdf8;
+        }
+
+        #back-to-top {
+            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        
+        .hamburger-line {
+            transition: all 0.3s;
+        }
     </style>
 </head>
-<body class="antialiased">
-    <header class="py-20 text-center border-b border-slate-800">
-        <h1 class="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">Aakash G S</h1>
-        <p class="text-xl text-slate-400">Software Engineer &middot; Architect &middot; Tech Enthusiast</p>
-    </header>
-    <main class="max-w-6xl mx-auto px-6 py-12">
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-slate-200 border-b border-slate-700 pb-2 inline-block">Featured Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <a href="cloudguard-ai.html" class="glass-card rounded-xl p-6 block">
-                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">CloudGuard AI</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">An advanced AI-powered cloud security platform designed to detect and mitigate threats in cloud infrastructure.</p>
-                </a>
-                <a href="ebpf-firewall.html" class="glass-card rounded-xl p-6 block">
-                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">eBPF XDP Firewall</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">High-performance, kernel-level network firewall built with eBPF/XDP for real-time packet inspection.</p>
-                </a>
-                <a href="morse-code-translation.html" class="glass-card rounded-xl p-6 block">
-                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">Morse Code Translator</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">A utility tool for encoding and decoding Morse code, providing instant translation.</p>
-                </a>
-                <a href="pose-detection.html" class="glass-card rounded-xl p-6 block">
-                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">Pose Detection System</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">Computer vision project utilizing machine learning models to detect human poses in real-time.</p>
-                </a>
-                <a href="01-signalkey-iot-security.html" class="glass-card rounded-xl p-6 block">
-                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">SignalKey IoT Security</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">A security framework for IoT devices focusing on signal-based authentication.</p>
-                </a>
-                <a href="02-fake-job-posting-detection.html" class="glass-card rounded-xl p-6 block">
-                    <h3 class="text-xl font-semibold mb-3 text-emerald-400">Fake Job Posting Detection</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">An explainable machine learning framework for detecting fraudulent job postings.</p>
-                </a>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Sticky Nav -->
+    <nav class="fixed w-full z-50 glass top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-xl tracking-tighter">
+                    <a href="index.html" class="text-white">AGS</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="hover:text-sky-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#portfolio" class="hover:text-sky-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        <a href="#portfolio" class="hover:text-sky-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Articles</a>
+                        <a href="#" class="hover:text-sky-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="#" class="hover:text-sky-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="hamburger-line inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-        </section>
-        <section>
-            <h2 class="text-3xl font-bold mb-8 text-slate-200 border-b border-slate-700 pb-2 inline-block">Latest Articles</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <a href="transformer-architecture-deep-dive.html" class="glass-card article-card rounded-xl p-6 block">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Demystifying the Transformer Architecture</h3>
-                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
-                </a>
-                <a href="cspm-aws-security.html" class="glass-card article-card rounded-xl p-6 block">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Building a Cloud Security Posture Management System</h3>
-                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
-                </a>
-                <a href="ebpf-performance-linux.html" class="glass-card article-card rounded-xl p-6 block">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">High-Performance Networking with eBPF and XDP</h3>
-                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
-                </a>
-                <a href="explainable-ai-shap.html" class="glass-card article-card rounded-xl p-6 block">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Interpreting Black-Box Models with SHAP Values</h3>
-                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
-                </a>
-                <a href="iot-physical-layer-auth.html" class="glass-card article-card rounded-xl p-6 block">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Physical Layer Authentication for IoT Devices</h3>
-                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
-                </a>
-                <a href="distributed-tracing-opentelemetry.html" class="glass-card article-card rounded-xl p-6 block">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Mastering Distributed Tracing with OpenTelemetry</h3>
-                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
-                </a>
-                <a href="zero-trust-architecture-basics.html" class="glass-card article-card rounded-xl p-6 block">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">The Fundamentals of Zero Trust Architecture</h3>
-                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
-                </a>
-                <a href="rust-for-systems-programming.html" class="glass-card article-card rounded-xl p-6 block">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Why Rust is Revolutionizing Systems Programming</h3>
-                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
-                </a>
-                <a href="kubernetes-operators-explained.html" class="glass-card article-card rounded-xl p-6 block">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">Extending Kubernetes with Custom Operators</h3>
-                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
-                </a>
-                <a href="generative-adversarial-networks-gans.html" class="glass-card article-card rounded-xl p-6 block">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-2">The Mathematics of Generative Adversarial Networks</h3>
-                    <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Read Article &rarr;</span>
-                </a>
-            </div>
-        </section>
-    </main>
-    <footer class="border-t border-slate-800 mt-20 py-8 text-center text-slate-500">
-        <div class="flex justify-center space-x-6 mb-4">
-            <a href="about.html" class="hover:text-slate-300 transition-colors">About Us</a>
-            <a href="contact.html" class="hover:text-slate-300 transition-colors">Contact Us</a>
-            <a href="privacy.html" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
-            <a href="terms.html" class="hover:text-slate-300 transition-colors">Terms of Service</a>
         </div>
-        <p>&copy; 2026 Aakash G S. All rights reserved.</p>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="hover:bg-slate-800 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#portfolio" class="hover:bg-slate-800 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#portfolio" class="hover:bg-slate-800 block px-3 py-2 rounded-md text-base font-medium">Articles</a>
+                <a href="#" class="hover:bg-slate-800 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#" class="hover:bg-slate-800 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex-grow flex flex-col justify-center w-full">
+        <div class="text-center md:text-left">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                <span class="block">Hi, I'm</span>
+                <span class="block gradient-text mt-2">Aakash G S</span>
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl text-slate-400 max-w-3xl leading-relaxed">
+                Software Engineer building intelligent systems at the intersection of Security, AI, and Infrastructure.
+            </p>
+            
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl border-t border-slate-800 pt-8">
+                <div>
+                    <p class="text-4xl font-bold text-white"><span class="counter" data-target="6">0</span></p>
+                    <p class="text-sm text-slate-500 uppercase tracking-wider mt-1">Projects</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-white"><span class="counter" data-target="10">0</span></p>
+                    <p class="text-sm text-slate-500 uppercase tracking-wider mt-1">Articles</p>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                    <p class="text-4xl font-bold text-white"><span class="counter" data-target="4">0</span>+</p>
+                    <p class="text-sm text-slate-500 uppercase tracking-wider mt-1">Domains</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Section -->
+    <main id="portfolio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full flex-grow">
+        
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12 gap-6">
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap gap-3" id="filters">
+                <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium bg-slate-800" data-filter="all">All</button>
+                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700" data-filter="project">Projects</button>
+                <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-slate-800 hover:bg-slate-700" data-filter="article">Articles</button>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="relative w-full md:w-72">
+                <input type="text" id="search-input" placeholder="Search..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-white placeholder-slate-400">
+                <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="cards-container">
+            
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="project">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Project</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">CloudGuard AI</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">AI-powered cloud security platform that detects anomalies in AWS infrastructure using autoencoders and real-time log analysis.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>12 min read</span>
+                    <a href="cloudguard-ai.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="project">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Project</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">eBPF XDP Firewall</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Kernel-level network firewall achieving line-rate DDoS mitigation through eBPF programs attached at the XDP hook point.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>10 min read</span>
+                    <a href="ebpf-firewall.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="project">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Project</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">Morse Code Translator</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Bidirectional encoding and decoding engine built with optimized hash maps for instant Morse code translation.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>8 min read</span>
+                    <a href="morse-code-translation.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="project">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Project</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">Pose Detection System</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Real-time human skeletal tracking using Google MediaPipe and OpenCV for 3D landmark estimation.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>9 min read</span>
+                    <a href="pose-detection.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="project">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Project</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">SignalKey IoT Security</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Hardware fingerprinting framework that authenticates IoT devices using analog RF signal characteristics.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>11 min read</span>
+                    <a href="01-signalkey-iot-security.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="project">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Project</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">Fake Job Posting Detection</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Explainable ML pipeline using XGBoost and SHAP to identify fraudulent job listings with full transparency.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>10 min read</span>
+                    <a href="02-fake-job-posting-detection.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="article">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">Article</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">Demystifying the Transformer Architecture</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">From self-attention mathematics to multi-head projections — a complete walkthrough of the architecture powering modern LLMs.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>15 min read</span>
+                    <a href="transformer-architecture-deep-dive.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="article">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">Article</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">Building a Cloud Security Posture Management System</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Architecting automated misconfiguration detection and remediation on AWS using CloudTrail, Config, and Lambda.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>14 min read</span>
+                    <a href="cspm-aws-security.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="article">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">Article</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">High-Performance Networking with eBPF and XDP</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">A systems engineering guide to bypassing the Linux network stack for line-rate packet processing.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>14 min read</span>
+                    <a href="ebpf-performance-linux.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="article">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">Article</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">Interpreting Black-Box Models with SHAP Values</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Applying game-theoretic Shapley values to bring transparency to ensemble models in production.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>13 min read</span>
+                    <a href="explainable-ai-shap.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="article">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">Article</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">Physical Layer Authentication for IoT Devices</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Securing constrained devices through RF fingerprinting and CNN-based signal classification.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>13 min read</span>
+                    <a href="iot-physical-layer-auth.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="article">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">Article</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">Mastering Distributed Tracing with OpenTelemetry</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Implementing end-to-end request tracing across microservices with W3C TraceContext propagation.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>14 min read</span>
+                    <a href="distributed-tracing-opentelemetry.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="article">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">Article</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">The Fundamentals of Zero Trust Architecture</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Moving beyond perimeter defense with identity-aware proxies and micro-segmentation.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>12 min read</span>
+                    <a href="zero-trust-architecture-basics.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="article">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">Article</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">Why Rust is Revolutionizing Systems Programming</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Analyzing ownership, borrowing, and fearless concurrency for memory-safe infrastructure.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>13 min read</span>
+                    <a href="rust-for-systems-programming.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="article">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">Article</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">Extending Kubernetes with Custom Operators</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">Encoding operational knowledge into reconciliation loops with CRDs and the Operator SDK.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>13 min read</span>
+                    <a href="kubernetes-operators-explained.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card card-item rounded-2xl overflow-hidden p-6 flex flex-col h-full" data-type="article">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">Article</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 leading-tight">The Mathematics of GANs</h3>
+                <p class="text-slate-400 text-sm flex-grow mb-6">The minimax game, Nash equilibrium, mode collapse, and modern stabilization techniques.</p>
+                <div class="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-700/50">
+                    <span>14 min read</span>
+                    <a href="generative-adversarial-networks-gans.html" class="text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center">
+                        Read more
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-slate-400 text-sm mb-4 md:mb-0">
+                &copy; 2026 Aakash G S. All rights reserved.
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-slate-400 hover:text-white text-sm">About Us</a>
+                <a href="#" class="text-slate-400 hover:text-white text-sm">Contact Us</a>
+                <a href="#" class="text-slate-400 hover:text-white text-sm">Privacy Policy</a>
+                <a href="#" class="text-slate-400 hover:text-white text-sm">Terms of Service</a>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-400 text-slate-900 rounded-full p-3 shadow-lg focus:outline-none z-40">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 15);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            // Start counter animation
+            setTimeout(updateCount, 500);
+        });
+
+        // Intersection Observer for Cards (Fade-in on scroll)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Filtering and Searching
+        const cards = document.querySelectorAll('.card-item');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const searchInput = document.getElementById('search-input');
+
+        function filterCards() {
+            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+            const searchTerm = searchInput.value.toLowerCase();
+
+            cards.forEach(card => {
+                const type = card.getAttribute('data-type');
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const desc = card.querySelector('p').innerText.toLowerCase();
+                
+                const matchesFilter = activeFilter === 'all' || type === activeFilter;
+                const matchesSearch = title.includes(searchTerm) || desc.includes(searchTerm);
+
+                if (matchesFilter && matchesSearch) {
+                    card.style.display = 'block';
+                    // Trigger reflow to restart transition
+                    void card.offsetWidth;
+                    card.classList.add('visible');
+                } else {
+                    card.style.display = 'none';
+                    card.classList.remove('visible');
+                }
+            });
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active', 'bg-sky-500', 'text-slate-900', 'hover:bg-sky-400'));
+                filterBtns.forEach(b => {
+                    if(b !== btn) {
+                        b.classList.add('bg-slate-800', 'hover:bg-slate-700');
+                    }
+                });
+                
+                btn.classList.remove('bg-slate-800', 'hover:bg-slate-700');
+                btn.classList.add('active');
+                filterCards();
+            });
+        });
+
+        searchInput.addEventListener('input', filterCards);
+
+        // Attach observer to cards
+        cards.forEach(card => observer.observe(card));
+
+        // Back to top
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
